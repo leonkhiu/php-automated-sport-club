@@ -29,7 +29,8 @@ class User extends DBO{
 		global $mydb;
 		$sql="SELECT * FROM ". self::$tableName. " WHERE (`username` = ?) LIMIT 1";
 		$parameter = array($username);
-		return $mydb->execute($sql, $parameter);
+		$result = $mydb->execute($sql, $parameter);
+		return !empty($result)? array_shift($result) : false;
 	}
 	
 	public static function findUsernameById($id){

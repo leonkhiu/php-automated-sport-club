@@ -122,10 +122,8 @@ class DBO{
 		global $mydb;
 		$className=get_called_class();
 		$object= new $className;
-		$sql="SELECT * FROM ". $object::$tableName. " WHERE (id=?) LIMIT 1";
-		//return $mydb->execute($sql);
+		$sql="SELECT * FROM `". $object::$tableName. "` WHERE (`id`=?) LIMIT 1";
 		$data = array($id);
-		//return $mydb->execute($sql, $data);
 		$found = $mydb->execute($sql, $data);
 		return !empty($found)? array_shift($found) : false;
 		
@@ -135,7 +133,7 @@ class DBO{
 		global $mydb;
 		$className=get_called_class();
 		$object= new $className;
-		$sql="DELETE FROM ". $object::$tableName. " WHERE (id=?)";
+		$sql="DELETE FROM `". $object::$tableName. "` WHERE (`id`=?)";
 		$data = array($id);
 		return $mydb->execute($sql, $data);
 	}

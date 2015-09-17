@@ -16,17 +16,30 @@ require_once ("../page/admintop.php");
 <h3>Very soon sign in page will be added and users must login</h3>
 <p>
 <?php
-
+	
+	
+	//$user = User::findByID(50);
+	
+	/*
+	$buser = new User();	
+	print_r($buser->findByID(2));
+	*/
+	
+	
+	/*
+	$user->id = 50;
+	$user->delete();
+	*/
 
 	
 	/*
 	echo "<br>";
-	
-	$ben->id=500;
-	$ben->fname = "MoHo00001";
-	$ben->lname = "Khaleqi00001";
-	$ben->username = "ferfery001";
-	$ben->hashpassword= makeHash("azadeh000");	
+	$ben = new User();
+	$ben->id=59;	
+	$ben->fname = "";
+	$ben->lname = "";
+	$ben->username = "abcde";
+	$ben->hashpassword= makeHash("");	
 	echo ($ben->save())? "updated" : "Not updated";
 	
 	echo "<hr>";
