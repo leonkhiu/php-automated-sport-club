@@ -12,7 +12,8 @@ require_once ("../page/admintop.php");
 ?>
 
 
-<h2>Administrator Panel</h2>
+<h2>Administrator Panel <small>Production version</small></h2>
+<h3>Very soon sign in page will be added and users must login</h3>
 <p>
 <?php
 
