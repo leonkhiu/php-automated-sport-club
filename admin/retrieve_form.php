@@ -63,11 +63,13 @@ $formElements=DFUserForm::findElements($form->id);
 
 echo "<h3>$form->title <small>$form->description</small></h3>";
 
+#----------------------------------------Form begin
 echo"<form method='post' name=\"$form->title\" class='form-horizontal'>";
 
 foreach ($formElements as $element){
 	$elementName= $element->question;
 	$helpText= isset($element->help_text)? $element->help_text : "";
+	$pattern = isset($element->pattern) ? $element->pattern : "";
 	$required = "";
 	if($element->required == 1){
 		$required = "required";
@@ -139,7 +141,11 @@ foreach ($formElements as $element){
 				if($textarea){
 					echo "<textarea class='form-control input-sm' rows='3' id=\"$elementName\" placeholder=\"$helpText\" $required></textarea>";
 				} else {
-					echo "<input type=\"$elementType\" id=\"$elementName\" class='form-control' placeholder=\"$helpText\" $required>";
+					echo "<input type=\"$elementType\" id=\"$elementName\" class='form-control'";
+					if(!empty($pattern)){
+						echo " pattern=\"$pattern\"";
+					}
+					echo " placeholder=\"$helpText\" title=\"$helpText\" $required>";
 					if($elementType == "time" || $elementType == "date"){
 						if(!empty($helpText)){
 							echo "<span class='help-block small'>$helpText</span>";
@@ -158,7 +164,7 @@ echo "<button type='submit' class='btn btn-primary'>Submit</button>";
 echo "</div>";
 echo "</div>";
 echo "</form>";
-
+#----------------------------------------Form end
 
 
 require_once ('../page/adminbuttom.php');

@@ -96,6 +96,33 @@ function formElement(type) {
 	helpText.setAttribute("class", "form-control");
 	helpText.setAttribute("Name", "helpElement[]");
 	helpText.setAttribute("id", "helpElement_" + i);
+	
+	if(type == "text" || type == "number"){
+		/*****************pattern Element*******************/
+		var formGroupPattern = document.createElement("div");
+		formGroupPattern.setAttribute("class", "form-group");	
+		
+		var patternLabel = document.createElement("label");
+		patternLabel.setAttribute("class", "col-sm-4 control-label");	
+		patternLabel.innerHTML = "Pattern";
+		patternLabel.setAttribute("for", "patternRegex_" + i);
+		
+		var patternTextContainer = document.createElement("div");
+		patternTextContainer.setAttribute("class", "col-md-4 col-xs-3");
+			
+		var patternText = document.createElement("INPUT");	
+		patternText.setAttribute("type", "text");
+		patternText.setAttribute("class", "form-control");
+		patternText.setAttribute("Name", "patternRegex[]");
+		patternText.setAttribute("id", "patternRegex_" + i);
+		
+		formGroupPattern.appendChild(patternLabel);
+		patternTextContainer.appendChild(patternText);
+		formGroupPattern.appendChild(patternTextContainer);
+		
+	}
+	
+	
 	/*********************************************************/
 	
 	if(type == "time" || type == "date" || type=="paragraph"){
@@ -187,6 +214,9 @@ function formElement(type) {
 	r.appendChild(removeButton);
 	r.appendChild(formGroupOne);
 	r.appendChild(formGroupTwo);
+	if(type == "text" || type == "number"){
+		r.appendChild(formGroupPattern);
+	}
 	if(needsDemo){
 		r.appendChild(demoElement);
 	}

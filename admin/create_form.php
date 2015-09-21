@@ -31,6 +31,7 @@ require_once ("../page/admintop.php");
  * 5: time
  * 6: text
  * 7: paragraph
+ * 8: Number
  */
 
 
@@ -51,6 +52,7 @@ if ($newForm) {
 		
 		$questions = $_POST ["questionElement"];
 		$helpTexts = $_POST ["helpElement"];
+		$patterns = $_POST ["patternRegex"];
 		$requiredFieldsID = $_POST ["requiredFieldID"];
 		$questionsType = $_POST ['questionType'];
 		
@@ -89,6 +91,10 @@ if ($newForm) {
 					$elementID = 7;
 					break;
 				
+				case "number" :
+					$elementID = 8;
+					break;
+				
 				default :
 					$elementID = 6;
 					break;
@@ -97,6 +103,7 @@ if ($newForm) {
 			$dFUserForm->form_id = $formID;
 			$dFUserForm->question = $questions [$i];
 			$dFUserForm->help_text = $helpTexts [$i];
+			$dFUserForm->pattern = $patterns[$i];
 			$dFUserForm->element_id = $elementID;
 			$dFUserForm->required = $required;
 			
@@ -142,8 +149,7 @@ if ($newForm) {
 	</div>
 
 
-	<span id="myForm"> <!-- Elements will be here -->
-	</span>
+	<span id="myForm"> <!-- Elements will be here --> </span>
 
 
 	<p class="text-center" id="form-submit">
@@ -154,16 +160,14 @@ if ($newForm) {
 
 
 <div id="form-maker" class="alert alert-info">
-	<a onclick="formElement('text')" href="#form-maker"
-		class="btn btn-success">Text</a> <a onclick="formElement('paragraph')"
-		href="#form-maker" class="btn btn-success">Paragraph text</a> <a
-		onclick="multipleChoice('checkbox')" href="#form-maker"
-		class="btn btn-success">Checkboxes</a>
-		<a onclick="multipleChoice('radio')" href="#form-maker" class="btn btn-success">Multiple choice</a>
-		<a onclick="formElement('time')" href="#form-maker"	class="btn btn-success">Time</a>
-		<a onclick="formElement('date')"
-		href="#form-maker" class="btn btn-success">Date</a> <a
-		onclick="resetElements()" class="btn btn-danger">Reset</a>
+	<a onclick="formElement('text')" href="#form-maker" class="btn btn-success">Text</a>
+	<a onclick="formElement('paragraph')" href="#form-maker" class="btn btn-success">Paragraph text</a>
+	<a onclick="formElement('number')" href="#form-maker" class="btn btn-success">Number</a>
+	<a onclick="multipleChoice('checkbox')" href="#form-maker" class="btn btn-success">Checkboxes</a>
+	<a onclick="multipleChoice('radio')" href="#form-maker" class="btn btn-success">Multiple choice</a>
+	<a onclick="formElement('time')" href="#form-maker"	class="btn btn-success">Time</a>
+	<a onclick="formElement('date')" href="#form-maker" class="btn btn-success">Date</a>
+	<a onclick="resetElements()" class="btn btn-danger">Reset</a>
 </div>
 
 <div class="panel-group" id="accordion" role="tablist"
@@ -173,8 +177,7 @@ if ($newForm) {
 			<h4 class="panel-title">
 				<a class="collapsed" role="button" data-toggle="collapse"
 					data-parent="#accordion" href="#collapseMe" aria-expanded="false"
-					aria-controls="collapseThree"> If you need help to choose, click on
-					me... </a>
+					aria-controls="collapseThree"> Click on me if you need help to create a form...</a>
 			</h4>
 		</div>
 		<div id="collapseMe" class="panel-collapse collapse" role="tabpanel"
