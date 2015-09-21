@@ -1,5 +1,7 @@
 <?php
 require_once("layout/top.php");
+$sweetAlertRequirement = true;
+$paginationRequirement = true;
 
 $viewType = isset($_GET['type'])? $_GET['type'] : "log";
 $logLink  = $currentFile. "?type=log";
@@ -25,6 +27,7 @@ $totalPages = (round($total/$perPage) == 1)? 0 : round($total/$perPage);
 $pagination = new pagination($page, $perPage , $total);
 
 $title = "Administrator-Home-Welcome $uname";
+/*
 $confirmJqueryUICSS= '<link rel="stylesheet" href="../css/jquery-ui.css" />';
 $confirmJqueryUIJS ='<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>';
 $confirmJqueryUIJS.='<script>window.jQuery || document.write(\'<script src="../js/jquery-ui.min.js"><\/script>\')</script>';
@@ -36,10 +39,11 @@ $confirmJqueryUIJS.='
 					';
 $additionalCss = $confirmJqueryUICSS;
 $additionalJS = $confirmJqueryUIJS;
+*/
 
 
-$additionalJS.= '<script src="../js/jquery.twbsPagination.min.js"></script>';
-//$additionalJS.= '<script src="../js/sport-club.js"></script>';
+$additionalCss ="";
+$additionalJS= '<script src="../js/sport-club.js"></script>';
 $additionalJS.="
 		<script>
 		   $('#pagination').twbsPagination({

@@ -58,7 +58,7 @@ function formElement(type) {
 	increment();
 	var needsDemo=false;
 	
-	var r = document.createElement('span');
+	var r = document.createElement('div');
 	
 	/*****************First Element*******************/
 	var formGroupOne = document.createElement("div");
@@ -223,6 +223,7 @@ function formElement(type) {
 	r.appendChild(formGroupThree);
 	
 	r.setAttribute("id", "id_" + i);
+	r.setAttribute("class", "formElement");
 	r.innerHTML = r.innerHTML + "<input type='hidden' name='questionType[]' value='" + type + "'>";
 	document.getElementById("myForm").appendChild(r);
 }
@@ -232,7 +233,7 @@ function multipleChoice(optionsType) {
 	
 	increment();
 	//var randomNumber = (Math.floor(Date.now() / 1000)) + (Math.floor((Math.random() * 100) + 1));
-	var r = document.createElement('span');
+	var r = document.createElement('div');
 	
 	/*****************First Element*******************/
 	var formGroupOne = document.createElement("div");
@@ -337,6 +338,7 @@ function multipleChoice(optionsType) {
 	r.appendChild(formGroupThree);
 	
 	r.setAttribute("id", "id_" + i);
+	r.setAttribute("class", "formElement");
 	r.innerHTML = r.innerHTML + "<input type='hidden' name='questionType[]' value='" + optionsType + "'>";
 	document.getElementById("myForm").appendChild(r);
 }

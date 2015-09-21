@@ -13,13 +13,24 @@
 <!-- Bootstrap core CSS -->
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/carousel.css" rel="stylesheet">
+<?php 
+if($sweetAlertRequirement){
+	echo '<link href="../css/sweetalert.css" rel="stylesheet" />';
+}
+?>
 <link href="../css/adminonly.css" rel="stylesheet">
 
 <?php echo $additionalCss; ?>
 </head>
 <!-- NAVBAR
 ================================================== -->
-<body>
+<?php 
+if($welcomeAlert){
+	echo "<body onload='welcomeAlert(\"$uname\")'>";	
+} else{
+	echo "<body>";
+}
+?>
 	
     <nav class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">

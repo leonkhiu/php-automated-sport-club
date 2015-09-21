@@ -1,16 +1,21 @@
 <?php
 require_once("layout/top.php");
-
+$sweetAlertRequirement = true;
 $title = "Administrator-Home-Welcome $uname";
+
+#-----------------------------------------check for welcome alert after login
+$previousPage = isset($_SERVER['HTTP_REFERER'])? $_SERVER['HTTP_REFERER'] :'';
+$tmpArray = explode("/", $previousPage);
+$previousFile=$tmpArray[(count($tmpArray)-1)];
+if($previousFile == "signin.php"){
+	$welcomeAlert= true;
+}
+
 $additionalCss = '';
-$additionalJS = '';
+$additionalJS ='<script src="../js/sport-club.js"></script>';
+
 require_once ("layout/htmltop.php");
-
-
-
 ?>
-
-
 <h2>Welcome <?php echo ucfirst($thisUser->fname)." ". ucfirst($thisUser->lname); ?>, <small>Production version</small></h2>
 <p>
 <?php

@@ -42,8 +42,17 @@
 	<!--<![endif]-->
 	
 	<script src="../js/bootstrap.min.js"></script>
-		
-	<?php echo $additionalJS;?>
+	<?php 
+	if($sweetAlertRequirement){
+		echo '<script src="../js/sweetalert.min.js"></script>';
+	}
+	
+	if($paginationRequirement){
+		echo '<script src="../js/jquery.twbsPagination.min.js"></script>';
+	}
+	
+	echo $additionalJS;
+	?>
 	
 	<!-- Sidebar nav active link -->
 	<script type="text/javascript">

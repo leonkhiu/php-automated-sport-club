@@ -3,8 +3,10 @@ require_once '../inc/initialise.php';
 $messages=array();
 
 if (!$session->isLoggedIn()){
-	redirect_to ( "../signin.php" );
+	redirectTo ( "../signin.php" );
 }
 $uid = isset($_SESSION ['uid'] )? $_SESSION ['uid'] : null;
 $uname = isset($_SESSION['username']) ? $_SESSION ['username'] : null;
 $thisUser = User::findByID($uid);
+
+$sweetAlertRequirement = $welcomeAlert = $paginationRequirement = false;
