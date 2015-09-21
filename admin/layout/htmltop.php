@@ -65,3 +65,4 @@
 					 instructions how to enable JavaScript in your web browser</a>.
 			 	</div>
 			</noscript>
+			<?php echo showMessage($messages); ?>

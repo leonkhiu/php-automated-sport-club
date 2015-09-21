@@ -16,7 +16,7 @@ $additionalJS .="<script>
 	});
 	</script>";
 	
-require_once ("../page/admintop.php");
+require_once ("layout/htmltop.php");
 
 /*********************Content******************************/
 //echo "<h2>View all...</h2>";
@@ -188,5 +188,5 @@ if ($newForm) {
 </div>
 
 <?php 
-require_once ('../page/adminbuttom.php');
+require_once ('layout/htmlbuttom.php');
 ?>

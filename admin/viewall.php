@@ -50,7 +50,7 @@ $additionalJS.="
 		</script>
 		";
 		
-require_once ("../page/admintop.php");
+require_once ("layout/htmltop.php");
 
 /*********************Content******************************/
 
@@ -87,5 +87,5 @@ echo showAll($objects, $columns, false, true, true, $startId);
 
 echo "<div class='text-center'><ul id='pagination' class='agination-sm '></ul></div>";
 
-require_once ('../page/adminbuttom.php');
+require_once ('layout/htmlbuttom.php');
 ?>

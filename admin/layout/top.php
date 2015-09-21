@@ -1,5 +1,6 @@
 <?php
 require_once '../inc/initialise.php';
+$messages=array();
 
 if (!$session->isLoggedIn()){
 	redirect_to ( "../signin.php" );

@@ -70,6 +70,7 @@ class User extends DBO{
 		
 	}
 
+	
 } // end of : class User
 $user=new User();
 

@@ -18,7 +18,7 @@
       <hr>
 
       <footer>
-        <p>&copy; Company 2015</p>
+        <p>&copy; Company <?php echo date("Y", time()); ?></p>
       </footer>
 
     </div><!--/.container-->

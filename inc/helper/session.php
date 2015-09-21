@@ -3,6 +3,7 @@ class Session {
 	private $loggedIn = false;
 	public $uid;
 	public $message;
+	
 	function __construct() {
 		session_start ();
 		$this->checkMessage ();
@@ -14,9 +15,11 @@ class Session {
 			// user no logged in ... do sth else
 		}
 	}
+	
 	public function isLoggedIn() {
 		return $this->loggedIn;
 	}
+	
 	public function login($user) {
 		// database should find user , username/password by authentication function
 		if ($user) {
@@ -25,11 +28,13 @@ class Session {
 			$this->loggedIn = true;
 		}
 	}
+	
 	public function logout() {
 		unset ( $_SESSION ['uid'] );
 		unset ( $this->uid );
 		$this->loggedIn = false;
 	}
+	
 	private function checkLogin() {
 		if (isset ( $_SESSION ['uid'] )) {
 			$this->uid = $_SESSION ['uid'];
@@ -39,6 +44,7 @@ class Session {
 			$this->loggedIn = false;
 		}
 	}
+	
 	private function checkMessage() {
 		if (isset ( $_SESSION ['message'] )) {
 			$this->message = $_SESSION ['message'];
@@ -47,6 +53,7 @@ class Session {
 			$this->message = "";
 		}
 	}
+	
 	public function message($msg = "") {
 		if (! empty ( $msg )) {
 			// set message

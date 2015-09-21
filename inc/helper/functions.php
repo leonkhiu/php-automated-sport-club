@@ -26,25 +26,26 @@ function redirectTo($location = NULL)
 
 /**
  * Display all objects in one table
- * @param Object $objects
- * @param Array $columns
- * @param Boolean $edit
- * @param Boolean $remove
- * @param Integer $startId
+ * 
+ * @param Object $objects        	
+ * @param Array $columns        	
+ * @param Boolean $edit        	
+ * @param Boolean $remove        	
+ * @param Integer $startId        	
  * @return string as a HTML table
  */
-function showAll($objects, $columns, $view=false, $edit=false, $remove=false, $startId=1){
-	$result="";
-	$result.='<div class="table-responsive">
+function showAll($objects, $columns, $view = false, $edit = false, $remove = false, $startId = 1) {
+	$result = "";
+	$result .= '<div class="table-responsive">
 	<table class="table table-hover table-condensed">
 		<thead>
         <tr>
           <th>#</th>';
-
-	foreach ($columns as $column){
-		$content= ucfirst($column);
-		if($column == "uid"){ 
-			$content="Username";
+	
+	foreach ( $columns as $column ) {
+		$content = ucfirst ( $column );
+		if ($column == "uid") {
+			$content = "Username";
 		}
 		$result.="<th>$content</th>";
 	}
@@ -159,4 +160,18 @@ function systemLog($uid, $message){
 	$log->date = time();
 	$log->save();
 }
+
+function showMessage($messages){
+	$output="";
+	if(count($messages) > 0){
+		foreach ($messages as $message){
+			$output .='<div class="alert alert-danger alert-dismissible" role="alert">';
+			$output .='<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+			$output .=$message;
+			$output .='</div>';
+		}
+	}
+	return $output;
+}
+
 ?>

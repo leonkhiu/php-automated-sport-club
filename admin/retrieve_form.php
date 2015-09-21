@@ -39,7 +39,7 @@ $additionalJS.="
 		</script>
 		";
 
-require_once ("../page/admintop.php");
+require_once ("layout/htmltop.php");
 
 /*********************Content******************************/
 //echo "<h5>To view a form, add e.g. '?formId=1' to end of URL <small>Will be fixed very soon</small></h5>";
@@ -165,5 +165,5 @@ echo "</form>";
 #----------------------------------------Form end
 
 
-require_once ('../page/adminbuttom.php');
+require_once ('layout/htmlbuttom.php');
 ?>

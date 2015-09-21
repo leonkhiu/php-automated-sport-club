@@ -4,7 +4,9 @@ require_once("layout/top.php");
 $title = "Administrator-Home-Welcome $uname";
 $additionalCss = '';
 $additionalJS = '';
-require_once ("../page/admintop.php");
+require_once ("layout/htmltop.php");
+
+
 
 ?>
 
@@ -67,5 +69,5 @@ require_once ("../page/admintop.php");
 ?>
 </p>
 <?php
-require_once ('../page/adminbuttom.php');
+require_once ('layout/htmlbuttom.php');;
 ?>
