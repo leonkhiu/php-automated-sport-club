@@ -1,0 +1,11 @@
+.login-form{
+	min-height: 200px;	
+	height: 300px;
+	
+}
+
+.middle{
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}

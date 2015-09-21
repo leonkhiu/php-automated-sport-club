@@ -35,7 +35,7 @@ class User extends DBO{
 	
 	public static function findUsernameById($id){
 		global $mydb;
-		$sql="SELECT `username` FROM ". self::$tableName. " WHERE (`id` = ?) LIMIT 1";
+		$sql="SELECT `username` FROM `". self::$tableName. "` WHERE (`id` = ?) LIMIT 1";
 		$parameter = array($id);
 		$result = $mydb->execute($sql, $parameter);
 		$result = array_shift($result);
@@ -57,6 +57,16 @@ class User extends DBO{
 		$parameter = array($username, $password);
 		$found = $mydb->execute($sql, $parameter);
 		return !empty($found)? array_shift($found) : false;
+		
+	}
+	
+	public static function isAcrive($id){		
+		global $mydb;
+		$sql="SELECT `active` FROM `". self::$tableName . "` WHERE (`id` = ?) LIMIT 1";
+		$parameter = array($id);
+		$result = $mydb->execute($sql, $parameter);
+		$result = array_shift($result);
+		return ($result->active == 1)? true : false;
 		
 	}
 

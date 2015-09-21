@@ -126,7 +126,6 @@ class DBO{
 		$data = array($id);
 		$found = $mydb->execute($sql, $data);
 		return !empty($found)? array_shift($found) : false;
-		
 	}
 	
 	public static function removeByID($id=0){

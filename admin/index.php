@@ -1,8 +1,5 @@
 <?php
-require_once '../inc/initialise.php';
-$uid= 1;
-$uname = "MoHo";
-
+require_once("layout/top.php");
 
 $title = "Administrator-Home-Welcome $uname";
 $additionalCss = '';
@@ -12,8 +9,7 @@ require_once ("../page/admintop.php");
 ?>
 
 
-<h2>Administrator Panel <small>Production version</small></h2>
-<h3>Very soon sign in page will be added and users must login</h3>
+<h2>Welcome <?php echo ucfirst($thisUser->fname)." ". ucfirst($thisUser->lname); ?>, <small>Production version</small></h2>
 <p>
 <?php
 	
@@ -56,7 +52,7 @@ require_once ("../page/admintop.php");
 	echo ($ben->delete())? "deleted..." : "Not deleted";
 	echo "</pre>";
 	*/
-	
+	/*
 	$thisUser = User::authentication("sandyfan", makeHash("azadeh000"));
 	//echo $thisUser->username;
 	$session->login($thisUser);
@@ -67,7 +63,7 @@ require_once ("../page/admintop.php");
 	$log->msg = $thisUser->username. " login to the system and viewed the admin/index.php";
 	$log->date = time();
 	$log->save();
-	
+	*/
 ?>
 </p>
 <?php

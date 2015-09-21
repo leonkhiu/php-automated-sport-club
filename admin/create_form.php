@@ -1,7 +1,5 @@
 <?php
-require_once '../inc/initialise.php';
-$uid= 1;
-$uname = "MoHo";
+require_once("layout/top.php");
 
 $newForm = isset($_POST['newForm'])? true : false;
 $stepOne = $stepTwo = $stepThree = false;

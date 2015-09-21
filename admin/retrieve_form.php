@@ -1,7 +1,5 @@
 <?php
-require_once '../inc/initialise.php';
-$uid= 1;
-$uname = "MoHo";
+require_once("layout/top.php");
 
 //pagination variable preparation
 $page= !empty($_GET['page']) ? (int)$_GET['page'] : 1;

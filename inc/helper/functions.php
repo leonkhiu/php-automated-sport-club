@@ -70,7 +70,7 @@ function showAll($objects, $columns, $view=false, $edit=false, $remove=false, $s
 		<td>$startId</td>";
 		foreach ($columns as $column){
 			if($column =="date" || $column =="last_update"){
-				$content = date('Y-m-d H:i',$object->$column);
+				$content = date('Y-m-d H:i:s',$object->$column);
 			} elseif($column == "active"){
 				if($object->$column == 1){
 					$content = "Active";
@@ -152,4 +152,11 @@ function moreSpace(){
 	return "<div class='more-space'></div>";
 }
 
+function systemLog($uid, $message){
+	$log = new SystemLog();
+	$log->uid = $uid;
+	$log->msg = $message;
+	$log->date = time();
+	$log->save();
+}
 ?>

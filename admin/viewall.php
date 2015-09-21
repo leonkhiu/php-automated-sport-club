@@ -1,7 +1,5 @@
 <?php
-require_once '../inc/initialise.php';
-$uid= 1;
-$uname = "MoHo";
+require_once("layout/top.php");
 
 $viewType = isset($_GET['type'])? $_GET['type'] : "log";
 $logLink  = $currentFile. "?type=log";

@@ -9,7 +9,7 @@
             <a href="retrieve_form.php" class="list-group-item">Retrieve Forms</a>
             <a href="create_form.php" class="list-group-item">Create a new form</a>
             <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
+            <a href="logout.php" class="list-group-item">Log out</a>
             
           </div>
         </div><!--/.sidebar-offcanvas-->
