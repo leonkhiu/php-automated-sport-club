@@ -17,7 +17,7 @@ $additionalJS ='<script src="../js/sport-club.js"></script>';
 require_once ("layout/htmltop.php");
 ?>
 <h2>Welcome <?php echo ucfirst($thisUser->fname)." ". ucfirst($thisUser->lname); ?>, <small>Production version</small></h2>
-<p>
+
 <?php
 	
 	
@@ -63,16 +63,8 @@ require_once ("layout/htmltop.php");
 	$thisUser = User::authentication("sandyfan", makeHash("azadeh000"));
 	//echo $thisUser->username;
 	$session->login($thisUser);
-	
-	
-	$log = new SystemLog();
-	$log->uid = $_SESSION['uid'];
-	$log->msg = $thisUser->username. " login to the system and viewed the admin/index.php";
-	$log->date = time();
-	$log->save();
-	*/
-?>
-</p>
-<?php
+*/
+
+
 require_once ('layout/htmlbuttom.php');;
 ?>

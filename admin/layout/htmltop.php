@@ -12,7 +12,7 @@
 
 <!-- Bootstrap core CSS -->
 <link href="../css/bootstrap.min.css" rel="stylesheet">
-<link href="../css/carousel.css" rel="stylesheet">
+<!-- <link href="../css/carousel.css" rel="stylesheet">  -->
 <?php 
 if($sweetAlertRequirement){
 	echo '<link href="../css/sweetalert.css" rel="stylesheet" />';

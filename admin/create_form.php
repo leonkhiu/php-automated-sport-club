@@ -18,6 +18,11 @@ $additionalJS .="<script>
 	
 require_once ("layout/htmltop.php");
 
+
+$confirmJqueryUIJS ='<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>';
+$confirmJqueryUIJS.='<script>window.jQuery || document.write(\'<script src="../js/jquery-ui.min.js"><\/script>\')</script>';
+$confirmJqueryUICSS= '<link rel="stylesheet" href="../css/jquery-ui.css" />';
+
 /*********************Content******************************/
 //echo "<h2>View all...</h2>";
 
