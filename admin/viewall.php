@@ -42,8 +42,8 @@ $additionalJS = $confirmJqueryUIJS;
 */
 
 
-$additionalCss ="";
-$additionalJS= '<script src="../js/sport-club.js"></script>';
+
+$additionalJS.= '<script src="../js/sport-club.js"></script>';
 $additionalJS.="
 		<script>
 		   $('#pagination').twbsPagination({

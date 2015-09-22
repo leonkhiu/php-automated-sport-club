@@ -5,7 +5,7 @@
 class DFUserForm extends DBO{
 
 	protected static $tableName="df_user_form";
-	protected static $tableFields=array('id', 'form_id', 'element_id', 'question', 'help_text', 'pattern', 'required');
+	protected static $tableFields=array('id', 'form_id', 'element_id', 'question', 'help_text', 'pattern', 'element_order', 'required');
 	
 	public $id;
 	public $form_id;
@@ -13,6 +13,7 @@ class DFUserForm extends DBO{
 	public $question;
 	public $help_text;
 	public $pattern;
+	public $element_order;
 	public $required;
 	
 	public static function findElements($formId){

@@ -32,9 +32,9 @@ $additionalCss = $confirmJqueryUICSS;
 $additionalJS = $confirmJqueryUIJS;
 */
 
-$additionalCss = '';
-$additionalJS ='<script src="../js/sport-club.js"></script>';
-$additionalJS.="
+
+$additionalJS .='<script src="../js/sport-club.js"></script>';
+$additionalJS .="
 		<script>
 		   $('#pagination').twbsPagination({
         	totalPages: $totalPages,

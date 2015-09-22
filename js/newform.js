@@ -223,7 +223,7 @@ function formElement(type) {
 	r.appendChild(formGroupThree);
 	
 	r.setAttribute("id", "id_" + i);
-	r.setAttribute("class", "formElement");
+	r.setAttribute("class", "formElement draggable");
 	r.innerHTML = r.innerHTML + "<input type='hidden' name='questionType[]' value='" + type + "'>";
 	document.getElementById("myForm").appendChild(r);
 }
@@ -338,7 +338,7 @@ function multipleChoice(optionsType) {
 	r.appendChild(formGroupThree);
 	
 	r.setAttribute("id", "id_" + i);
-	r.setAttribute("class", "formElement");
+	r.setAttribute("class", "formElement draggable");
 	r.innerHTML = r.innerHTML + "<input type='hidden' name='questionType[]' value='" + optionsType + "'>";
 	document.getElementById("myForm").appendChild(r);
 }

@@ -50,8 +50,13 @@
 	if($paginationRequirement){
 		echo '<script src="../js/jquery.twbsPagination.min.js"></script>';
 	}
-	
-	echo $additionalJS;
+	if($jQueryUI){
+		echo '<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>';
+		echo '<script>window.jQuery || document.write(\'<script src="../js/jquery-ui.min.js"><\/script>\')</script>';
+	}
+	if(!empty($additionalJS)){
+		echo $additionalJS;
+	}
 	?>
 	
 	<!-- Sidebar nav active link -->

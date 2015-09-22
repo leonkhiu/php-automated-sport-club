@@ -1,12 +1,14 @@
 <?php
 require_once("layout/top.php");
+$jQueryUI = true;
 
 $newForm = isset($_POST['newForm'])? true : false;
 $stepOne = $stepTwo = $stepThree = false;
 
 $title = "Create a new form-$uname";
-$additionalCss = '';
-$additionalJS = '<script src="../js/newform.js" type="text/javascript"></script>';
+$additionalJS .= '<script src="../js/newform.js" type="text/javascript"></script>';
+$additionalJS .= '<script src="../js/darg-drop.js" type="text/javascript"></script>';
+
 $additionalJS .="<script>
 	jQuery('a[href^=\"#form-maker\"]').click(function(e) { 
     	jQuery('html,body').animate({ scrollTop: jQuery(this.hash).offset().top}, 1000); 
@@ -18,10 +20,6 @@ $additionalJS .="<script>
 	
 require_once ("layout/htmltop.php");
 
-
-$confirmJqueryUIJS ='<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>';
-$confirmJqueryUIJS.='<script>window.jQuery || document.write(\'<script src="../js/jquery-ui.min.js"><\/script>\')</script>';
-$confirmJqueryUICSS= '<link rel="stylesheet" href="../css/jquery-ui.css" />';
 
 /*********************Content******************************/
 //echo "<h2>View all...</h2>";
@@ -53,11 +51,12 @@ if ($newForm) {
 	
 	if ($stepOne) {
 		
-		$questions = $_POST ["questionElement"];
-		$helpTexts = $_POST ["helpElement"];
-		$patterns = $_POST ["patternRegex"];
-		$requiredFieldsID = $_POST ["requiredFieldID"];
-		$questionsType = $_POST ['questionType'];
+		$questions 			= $_POST ["questionElement"];
+		$helpTexts			= $_POST ["helpElement"];
+		$patterns 			= $_POST ["patternRegex"];
+		$requiredFieldsID	= $_POST ["requiredFieldID"];
+		$questionsType		= $_POST ['questionType'];
+		//$orders				= $_POST ['elementOrder'];
 		
 		for($i = 0; $i < count ( $questions ); $i ++) {
 			$requiredFieldName = "requiredField" . $requiredFieldsID [$i];
@@ -103,12 +102,13 @@ if ($newForm) {
 					break;
 			}
 			
-			$dFUserForm->form_id = $formID;
-			$dFUserForm->question = $questions [$i];
-			$dFUserForm->help_text = $helpTexts [$i];
-			$dFUserForm->pattern = $patterns[$i];
-			$dFUserForm->element_id = $elementID;
-			$dFUserForm->required = $required;
+			$dFUserForm->form_id 	   = $formID;
+			$dFUserForm->question 	   = $questions [$i];
+			$dFUserForm->help_text 	   = $helpTexts [$i];
+			$dFUserForm->pattern	   = @$patterns[$i];
+			$dFUserForm->element_id	   = $elementID;
+			$dFUserForm->required	   = $required;
+			$dFUserForm->element_order = $i;
 			
 			if ($dFUserForm->save ()) {
 				$stepTwo = true;
@@ -152,7 +152,7 @@ if ($newForm) {
 	</div>
 
 
-	<span id="myForm"> <!-- Elements will be here --> </span>
+	<span id="myForm" class="droppable"> <!-- Elements will be here --> </span>
 
 
 	<p class="text-center" id="form-submit">

@@ -11,8 +11,7 @@ if($previousFile == "signin.php"){
 	$welcomeAlert= true;
 }
 
-$additionalCss = '';
-$additionalJS ='<script src="../js/sport-club.js"></script>';
+$additionalJS .='<script src="../js/sport-club.js"></script>';
 
 require_once ("layout/htmltop.php");
 ?>

@@ -15,7 +15,10 @@
 <!-- <link href="../css/carousel.css" rel="stylesheet">  -->
 <?php 
 if($sweetAlertRequirement){
-	echo '<link href="../css/sweetalert.css" rel="stylesheet" />';
+	echo '<link href="../css/sweetalert.css" rel="stylesheet">';
+}
+if($jQueryUI){
+	echo '<link href="../css/jquery-ui.css" rel="stylesheet">';
 }
 ?>
 <link href="../css/adminonly.css" rel="stylesheet">
