@@ -2,7 +2,9 @@
 require_once("layout/top.php");
 $jQueryUI = true;
 
+$newForm = false;
 $newForm = isset($_POST['newForm'])? true : false;
+
 $stepOne = $stepTwo = $stepThree = false;
 
 $title = "Create a new form-$uname";
@@ -34,10 +36,13 @@ require_once ("layout/htmltop.php");
  * 7: paragraph
  * 8: Number
  */
-
+ 
+echo "<pre>";
+var_dump($_POST);
+echo "</pre>";
 
 if ($newForm) {
-	
+
 	$dFForm->title = $_POST ["fromTitle"];
 	$dFForm->description = $_POST ["formDescription"];
 	$dFForm->date = time ();
@@ -53,7 +58,7 @@ if ($newForm) {
 		
 		$questions 			= $_POST ["questionElement"];
 		$helpTexts			= $_POST ["helpElement"];
-		$patterns 			= $_POST ["patternRegex"];
+		$patterns 			= @$_POST ["patternRegex"];
 		$requiredFieldsID	= $_POST ["requiredFieldID"];
 		$questionsType		= $_POST ['questionType'];
 		//$orders				= $_POST ['elementOrder'];

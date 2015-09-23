@@ -279,9 +279,7 @@ function multipleChoice(optionsType) {
 	/*****************options Element*******************/
 	var optionsElements = document.createElement("div");
 	optionsElements.setAttribute("class", "form-group");
-	optionsElements.setAttribute("id", "options-place_" + i);
-	optionsElements.innerHTML = "<abbr class='invisible'>"+ i +"</abbr>";
-	
+	optionsElements.setAttribute("id", "options-place_" + i);	
 	
 	/*****************Demo Element add a new option*******************/
 	var demoElement = document.createElement("div");
@@ -359,9 +357,6 @@ function addOptions(parentDiv, optionsType) {
 	// there is 2 input tag for each option. One is the radio button or checkbox and the other one is textbox
 	//Why +1 ? because at this line, it has not been created yet
 
-	var parentNumber = document.getElementById(parentDiv).getElementsByTagName('abbr')[0].innerHTML;
-	//console.log(parentNumber);
-	
 	var optionContainer = document.createElement("div");
 	optionContainer.setAttribute("class", "form-group");
 	optionContainer.setAttribute("id", "optionContainer_" + i + j);
@@ -373,7 +368,7 @@ function addOptions(parentDiv, optionsType) {
 	} else {
 		optionLabel.innerHTML = "<input type='checkbox'>";
 	}
-	//optionLabel.setAttribute("for", "option_" + j);
+	optionLabel.setAttribute("for", "option_" + j);
 
 	var optionTextContainer = document.createElement("div");
 	optionTextContainer.setAttribute("class", "col-md-4 col-xs-3");
@@ -400,7 +395,7 @@ function addOptions(parentDiv, optionsType) {
 
 		optionContainer.appendChild(optionLabel); //
 		//optionTextContainer.innerHTML = "<input type='text' class='form-control required' name='option_"+ j + "' id='option_"+ j + "' placeholder='This text will be show in the final form' required>";
-		optionTextContainer.innerHTML = "<input type='text' class='form-control' name='multiOption_"+ parentNumber + "[]' placeholder='This text will be show in the final form' required>";
+		optionTextContainer.innerHTML = "<input type='text' class='form-control required' name='multiOption_"+ i + "[]' id='option_"+ j + "' placeholder='This text will be show in the final form' required>";
 		optionContainer.appendChild(optionTextContainer); //
 		optionContainer.appendChild(removeButton);
 		document.getElementById(parentDiv).appendChild(optionContainer);

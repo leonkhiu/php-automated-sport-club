@@ -7,7 +7,7 @@ cookieLogin(WEBSITE_NAME.'_uname', WEBSITE_NAME.'_pass');
 if (!$session->isLoggedIn()){
 	redirectTo ( "../signin.php" );
 }
-$uid = isset($_SESSION ['uid'] )? $_SESSION ['uid'] : null;
+$uid = isset($_SESSION ['uid'] )? $_SESSION ['uid'] : 0;
 $uname = isset($_SESSION['username']) ? $_SESSION ['username'] : null;
 $thisUser = User::findByID($uid);
 

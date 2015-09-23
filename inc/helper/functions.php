@@ -73,7 +73,11 @@ function showAll($objects, $columns, $view = false, $edit = false, $remove = fal
 					$content = "Not active";
 				}
 			} elseif ($column == "uid") {
-				$content = User::findUsernameById ( $object->$column );
+				if($object->$column == 0){
+					$content = "Unknown";
+				} else {
+					$content = User::findUsernameById ( $object->$column );
+				}
 			} else {
 				$content = $object->$column;
 			}
