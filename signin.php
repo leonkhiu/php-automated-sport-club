@@ -2,6 +2,15 @@
 require_once 'inc/initialise.php';
 $messages = array();
 
+if(cookieLogin(WEBSITE_NAME.'_uname', WEBSITE_NAME.'_pass')){
+	redirectTo("admin/index.php");
+}
+
+if ($session->isLoggedIn()){
+	redirectTo ( "admin/index.php" );
+}
+
+
 $sq = SecurityQuestion::randomOne();
 #-------------------------Form submition
 if(isset($_POST["signin"])){
@@ -18,6 +27,10 @@ if(isset($_POST["signin"])){
 			if(User::isAcrive($thisUser->id)){
 				$session->login($thisUser);
 				systemLog($thisUser->id, "Logged in");
+				if(isset($_POST['rememberMe'])){
+					//cookie
+					rememberMe(true, $uname, makeHash($password));
+				}
 				redirectTo("admin/index.php");
 			}else{
 				// is not active
@@ -64,7 +77,7 @@ require_once ("page/publictop.php");
 		
 		<div class="form-group">			
 			<div class="checkbox">
-				<label> <input type="checkbox"> Remember me	</label>				
+				<label> <input type="checkbox" name="rememberMe"> Remember me	</label>				
 			</div>			
 		</div>
 		

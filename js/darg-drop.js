@@ -14,7 +14,7 @@ function Dropped(event, ui) {
 		// $(this).html("Hello World" + i);
 
 		//$(this).addClass("order" + i);
-		$(this).attr("class", "formElement draggable order" + i);
+		//$(this).attr("class", "formElement draggable order" + i);
 		$('<input>').attr({
 		    type: 'hidden',
 		    name: 'elementOrder[]',

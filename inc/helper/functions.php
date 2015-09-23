@@ -1,32 +1,26 @@
 <?php
-
-function __autoload($classname){
-	$classname = strtolower($classname);
+function __autoload($classname) {
+	$classname = strtolower ( $classname );
 	$path = "../inc/{$classname}.php";
-	if(file_exists($path)){
-		require_once($path);
+	if (file_exists ( $path )) {
+		require_once ($path);
 	} else {
-		die("The file: {$classname}.php could not be found.");
+		die ( "The file: {$classname}.php could not be found." );
 	}
-	
 }
-
-function makeHash($string){
-	return hash("md5", $string);
+function makeHash($string) {
+	return hash ( "md5", $string );
 }
-
-function redirectTo($location = NULL)
-{
-	if($location !=NULL)
-	{
-		header("location: {$location}");
-		exit;
+function redirectTo($location = NULL) {
+	if ($location != NULL) {
+		header ( "location: {$location}" );
+		exit ();
 	}
 }
 
 /**
  * Display all objects in one table
- * 
+ *
  * @param Object $objects        	
  * @param Array $columns        	
  * @param Boolean $edit        	
@@ -47,132 +41,155 @@ function showAll($objects, $columns, $view = false, $edit = false, $remove = fal
 		if ($column == "uid") {
 			$content = "Username";
 		}
-		$result.="<th>$content</th>";
+		$result .= "<th>$content</th>";
 	}
 	
-	if($view){
-		$result.="<th></th>";
-	}	
-	if($edit){
-		$result.="<th></th>";
+	if ($view) {
+		$result .= "<th></th>";
 	}
-	if($remove){
-		$result.="<th></th>";
+	if ($edit) {
+		$result .= "<th></th>";
+	}
+	if ($remove) {
+		$result .= "<th></th>";
 	}
 	
-	$result.="
+	$result .= "
         </tr>
       </thead>
       <tbody>";
-	foreach ($objects as $object){
-		$startId++;
-		$result.="
+	foreach ( $objects as $object ) {
+		$startId ++;
+		$result .= "
 		<tr >
 		<td>$startId</td>";
-		foreach ($columns as $column){
-			if($column =="date" || $column =="last_update"){
-				$content = date('Y-m-d H:i:s',$object->$column);
-			} elseif($column == "active"){
-				if($object->$column == 1){
+		foreach ( $columns as $column ) {
+			if ($column == "date" || $column == "last_update") {
+				$content = date ( 'Y-m-d H:i:s', $object->$column );
+			} elseif ($column == "active") {
+				if ($object->$column == 1) {
 					$content = "Active";
-				} else{
+				} else {
 					$content = "Not active";
 				}
-			} elseif($column == "uid"){
-				$content = User::findUsernameById($object->$column);
-			} else{
+			} elseif ($column == "uid") {
+				$content = User::findUsernameById ( $object->$column );
+			} else {
 				$content = $object->$column;
 			}
-			$result.="<td>$content</td>";
+			$result .= "<td>$content</td>";
 		}
-		$id = (isset($object->id))? $object->id : $object->uid;
-		if($view){
-			$viewLink=currentFile().urlAddorChangeParaeter("viewId", $id);
-			$result.="<td><a class='btn btn-default' role='button' href='$viewLink'>View</a></td>";
-		}
-		
-		if($edit){
-			$editLink=currentFile()."?editId=".$id;
-			$result.="<td><a class='btn btn-default' role='button' href='$editLink'>Edit</a></td>";
-		}
-		if($remove){
-			$removeLink=currentFile()."?delId=".$id;
-			$delConfirmMsg="Are you sure you want to permanently delete this item?<br><br> If you delete an item, it will be permanently lost.";
-			//$result.="<td><a href='$removeLink' class='btn btn-danger delConfirm' role='button' title='$delConfirmMsg'>Delete</a></td>";
-			$result.="<td><a  class='btn btn-danger' onclick=deleteConfirmation('".$removeLink."') role='button'>Delete</a></td>";
+		$id = (isset ( $object->id )) ? $object->id : $object->uid;
+		if ($view) {
+			$viewLink = currentFile () . urlAddorChangeParaeter ( "viewId", $id );
+			$result .= "<td><a class='btn btn-default' role='button' href='$viewLink'>View</a></td>";
 		}
 		
-		$result.="</tr>";
+		if ($edit) {
+			$editLink = currentFile () . "?editId=" . $id;
+			$result .= "<td><a class='btn btn-default' role='button' href='$editLink'>Edit</a></td>";
+		}
+		if ($remove) {
+			$removeLink = currentFile () . "?delId=" . $id;
+			$delConfirmMsg = "Are you sure you want to permanently delete this item?<br><br> If you delete an item, it will be permanently lost.";
+			// $result.="<td><a href='$removeLink' class='btn btn-danger delConfirm' role='button' title='$delConfirmMsg'>Delete</a></td>";
+			$result .= "<td><a  class='btn btn-danger' onclick=deleteConfirmation('" . $removeLink . "') role='button'>Delete</a></td>";
+		}
 		
+		$result .= "</tr>";
 	}
-
-	$result.="
+	
+	$result .= "
       </tbody>
 	</table>
 </div>";
 	return $result;
 }
-
-function currentfile(){
-	return basename($_SERVER['PHP_SELF']);
+function currentfile() {
+	return basename ( $_SERVER ['PHP_SELF'] );
 }
-
-function formToken(){
-	$today = time();
+function formToken() {
+	$today = time ();
 	$yesterday = $today - 86400;
-	$tmp1 = (rand($yesterday, $today)).uniqid();
-	return hash("md5", $tmp1);
+	$tmp1 = (rand ( $yesterday, $today )) . uniqid ();
+	return hash ( "md5", $tmp1 );
 }
-
-function urlAddorChangeParaeter($parameter, $value)
-{
-	$params = array();
+function urlAddorChangeParaeter($parameter, $value) {
+	$params = array ();
 	$output = "?";
 	$firstRun = true;
-	foreach($_GET as $key=>$val)
-	{
-		if($key != $parameter)
-		{
-			if(!$firstRun)
-			{
+	foreach ( $_GET as $key => $val ) {
+		if ($key != $parameter) {
+			if (! $firstRun) {
 				$output .= "&";
-			}
-			else
-			{
+			} else {
 				$firstRun = false;
 			}
-			$output .= $key."=".urlencode($val);
+			$output .= $key . "=" . urlencode ( $val );
 		}
 	}
-	if(!$firstRun)
+	if (! $firstRun)
 		$output .= "&";
-	$output .= $parameter."=".urlencode($value);
-	return htmlentities($output);
+	$output .= $parameter . "=" . urlencode ( $value );
+	return htmlentities ( $output );
 }
-
-function moreSpace(){
+function moreSpace() {
 	return "<div class='more-space'></div>";
 }
-
-function systemLog($uid, $message){
-	$log = new SystemLog();
+function systemLog($uid, $message) {
+	$log = new SystemLog ();
 	$log->uid = $uid;
 	$log->msg = $message;
-	$log->date = time();
-	$log->save();
+	$log->date = time ();
+	$log->save ();
 }
-
-function showMessage($messages){
-	$output="";
-	if(count($messages) > 0){
-		foreach ($messages as $message){
-			$output .='<div class="alert alert-danger alert-dismissible" role="alert">';
-			$output .='<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
-			$output .=$message;
-			$output .='</div>';
+function showMessage($messages) {
+	$output = "";
+	if (count ( $messages ) > 0) {
+		foreach ( $messages as $message ) {
+			$output .= '<div class="alert alert-danger alert-dismissible" role="alert">';
+			$output .= '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+			$output .= $message;
+			$output .= '</div>';
 		}
 	}
 	return $output;
 }
-
+function cookieLogin($uname, $pass) {
+	global $user;
+	global $session;
+	$loggedIn = false;
+	
+	if (isset ( $_COOKIE [$uname] ) && isset ( $_COOKIE [$pass] )) {
+		$uname = $_COOKIE [$uname];
+		$pass = $_COOKIE [$pass];
+		
+		$thisUser = $user->authentication ( $uname, $pass );
+		if ($thisUser) {
+			if (User::isAcrive ( $thisUser->id )) {
+				$session->login ( $thisUser );
+				systemLog ( $thisUser->id, "Cookie Logged in" );
+				$loggedIn = true;
+			}
+		} else {
+			$session->logout ();
+			unset ( $thisUser );
+		}
+	}
+	return $loggedIn;
+}
+function rememberMe($rememberMe, $uname = '', $pass = '') {
+	if ($rememberMe) {
+		$expiry = time () + (14 * 24 * 60 * 60); // 2 weeks
+		setcookie ( WEBSITE_NAME . '_uname', $uname, $expiry, '/' );
+		setcookie ( WEBSITE_NAME . '_pass', $pass, $expiry, '/' );
+	} else {
+		if (isset ( $_COOKIE [WEBSITE_NAME . '_uname'] )) {
+			unset ( $_COOKIE [WEBSITE_NAME . '_uname'] );
+			unset ( $_COOKIE [WEBSITE_NAME . '_pass'] );
+			setcookie ( WEBSITE_NAME . '_uname', " ", time () - 3600 , '/' );
+			setcookie ( WEBSITE_NAME . '_pass', " ", time () - 3600 , '/' );
+		}
+	}
+}
 ?>

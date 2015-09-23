@@ -2,6 +2,8 @@
 require_once '../inc/initialise.php';
 $messages=array();
 
+cookieLogin(WEBSITE_NAME.'_uname', WEBSITE_NAME.'_pass');
+
 if (!$session->isLoggedIn()){
 	redirectTo ( "../signin.php" );
 }

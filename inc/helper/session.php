@@ -5,6 +5,7 @@ class Session {
 	public $message;
 	
 	function __construct() {
+		session_cache_expire(60);
 		session_start ();
 		$this->checkMessage ();
 		$this->checkLogin ();
