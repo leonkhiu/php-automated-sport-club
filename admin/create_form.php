@@ -51,6 +51,7 @@ if ($newForm) {
 	
 	if ($dFForm->save ()) {
 		$formID = $mydb->LastInsertedId ();
+		systemLog($uid, "Create a from with ID=".$formID);
 		$stepOne = true;
 	}
 	

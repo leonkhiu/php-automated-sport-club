@@ -22,13 +22,19 @@ function redirectTo($location = NULL) {
  * Display all objects in one table
  *
  * @param Object $objects        	
- * @param Array $columns        	
+ * @param Array $columns 
+ * @param Boolean $view             	
  * @param Boolean $edit        	
  * @param Boolean $remove        	
  * @param Integer $startId        	
  * @return string as a HTML table
  */
 function showAll($objects, $columns, $view = false, $edit = false, $remove = false, $startId = 1) {
+	$hasID = false;
+	if (in_array("uid", $columns) || in_array("id", $columns)) {
+		$hasID = true;
+	}
+	
 	$result = "";
 	$result .= '<div class="table-responsive">
 	<table class="table table-hover table-condensed">
@@ -83,7 +89,12 @@ function showAll($objects, $columns, $view = false, $edit = false, $remove = fal
 			}
 			$result .= "<td>$content</td>";
 		}
-		$id = (isset ( $object->id )) ? $object->id : $object->uid;
+		if($hasID){
+			$id = (isset ( $object->id )) ? $object->id : $object->uid;
+		} else{
+			//there is no ID
+			$id = 0;
+		}
 		if ($view) {
 			$viewLink = currentFile () . urlAddorChangeParaeter ( "viewId", $id );
 			$result .= "<td><a class='btn btn-default' role='button' href='$viewLink'>View</a></td>";

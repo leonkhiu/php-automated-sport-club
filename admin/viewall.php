@@ -72,24 +72,22 @@ echo "</ul>";
 
 echo moreSpace();
 
-
-
+$startId=($page-1) * $perPage;
 switch ($viewType) {
 	case "user" :
 		$objects = User::findAllPagination($perPage, $pagination->offset());
 		$columns=array("username", "active", "fname", "lname", "date");
+		$result = showAll($objects, $columns, false, true, true, $startId);
 		break;
 	case "log":
-		$objects = SystemLog::findAllPagination($perPage, $pagination->offset());
-		$columns=array("uid", "msg", "date");
+		$objects = SysLog::findAllPagination($perPage, $pagination->offset());
+		$columns=array("username", "message", "date");
+		$result = showAll($objects, $columns, false, false, false, $startId);
 		break;
 }
 
-$startId=($page-1) * $perPage;
-echo showAll($objects, $columns, false, true, true, $startId);
 
-
+echo $result;
 echo "<div class='text-center'><ul id='pagination' class='agination-sm '></ul></div>";
-
 require_once ('layout/htmlbuttom.php');
 ?>
