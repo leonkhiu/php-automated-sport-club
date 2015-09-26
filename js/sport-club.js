@@ -41,3 +41,26 @@ function deleteConfirmation(removeLink) {
 		
 	});
 }
+
+function systemlogdeletion(removeLink) {
+	swal({
+		title : "Are you sure?",
+		text : "You will not be able to recover system log!",
+		type : "warning",
+		showCancelButton : true,
+		confirmButtonColor : "#DD6B55",
+		confirmButtonText : "Yes, remove all!",
+		closeOnConfirm : false
+	}, function() {
+		swal({
+				title: "Deleted!",
+				text: "All logs will be deleted soon...",
+				type: "success",
+				showConfirmButton: false
+				});
+		setTimeout(function(){
+			window.location.href = "" + removeLink;
+		}, 3000);
+		
+	});
+}

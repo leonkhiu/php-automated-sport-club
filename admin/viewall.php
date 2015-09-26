@@ -2,6 +2,7 @@
 require_once("layout/top.php");
 $sweetAlertRequirement = true;
 $paginationRequirement = true;
+$showLogs = false;
 
 $viewType = isset($_GET['type'])? $_GET['type'] : "log";
 $logLink  = $currentFile. "?type=log";
@@ -22,6 +23,14 @@ switch ($viewType){
 		$tabLogClass="active";
 		break;
 }
+
+#Remove all logs
+if(isset($_GET['log_truncate']) && $_GET['log_truncate'] == 1367){
+	SystemLog::removeAll();
+	systemLog($uid, "Removed all logs");
+	$messages[]="All logs have been deleted!";
+}
+
 
 $totalPages = (round($total/$perPage) == 1)? 0 : round($total/$perPage);
 $pagination = new pagination($page, $perPage , $total);
@@ -83,11 +92,21 @@ switch ($viewType) {
 		$objects = SysLog::findAllPagination($perPage, $pagination->offset());
 		$columns=array("username", "message", "date");
 		$result = showAll($objects, $columns, false, false, false, $startId);
+		$showLogs = true;
 		break;
 }
 
 
 echo $result;
 echo "<div class='text-center'><ul id='pagination' class='agination-sm '></ul></div>";
+
+echo moreSpace();
+
+if($showLogs){
+	$removeLink = currentFile () . "?log_truncate=1367";
+	echo "<a  class='btn btn-danger' onclick=systemlogdeletion('" . $removeLink . "') role='button'>Remove all logs</a>";
+}
+
+
 require_once ('layout/htmlbuttom.php');
 ?>

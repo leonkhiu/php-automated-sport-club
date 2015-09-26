@@ -10,5 +10,12 @@ class SystemLog extends DBO{
 	public $uid;
 	public $msg;
 	public $date;	
+			
+	public static function removeAll(){
+		global $mydb;
+		$sql="TRUNCATE TABLE ". self::$tableName;
+		$result = $mydb->execute($sql);
+	}
+	
 }
 ?>

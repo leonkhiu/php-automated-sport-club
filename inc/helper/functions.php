@@ -106,7 +106,7 @@ function showAll($objects, $columns, $view = false, $edit = false, $remove = fal
 		}
 		if ($remove) {
 			$removeLink = currentFile () . "?delId=" . $id;
-			$delConfirmMsg = "Are you sure you want to permanently delete this item?<br><br> If you delete an item, it will be permanently lost.";
+			//$delConfirmMsg = "Are you sure you want to permanently delete this item?<br><br> If you delete an item, it will be permanently lost.";
 			// $result.="<td><a href='$removeLink' class='btn btn-danger delConfirm' role='button' title='$delConfirmMsg'>Delete</a></td>";
 			$result .= "<td><a  class='btn btn-danger' onclick=deleteConfirmation('" . $removeLink . "') role='button'>Delete</a></td>";
 		}
@@ -183,7 +183,7 @@ function cookieLogin($uname, $pass) {
 		if ($thisUser) {
 			if (User::isAcrive ( $thisUser->id )) {
 				$session->login ( $thisUser );
-				systemLog ( $thisUser->id, "Cookie Logged in" );
+				//systemLog ( $thisUser->id, "Cookie Logged in" );
 				$loggedIn = true;
 			}
 		} else {
