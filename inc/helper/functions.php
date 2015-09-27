@@ -195,9 +195,8 @@ function cookieLogin($uname, $pass) {
 }
 function rememberMe($rememberMe, $uname = '', $pass = '') {
 	if ($rememberMe) {
-		$expiry = time () + (14 * 24 * 60 * 60); // 2 weeks
-		setcookie ( WEBSITE_NAME . '_uname', $uname, $expiry, '/' );
-		setcookie ( WEBSITE_NAME . '_pass', $pass, $expiry, '/' );
+		setcookie ( WEBSITE_NAME . '_uname', $uname, COOKIE_EXPIRE, '/' );
+		setcookie ( WEBSITE_NAME . '_pass', $pass, COOKIE_EXPIRE, '/' );
 	} else {
 		if (isset ( $_COOKIE [WEBSITE_NAME . '_uname'] )) {
 			unset ( $_COOKIE [WEBSITE_NAME . '_uname'] );
