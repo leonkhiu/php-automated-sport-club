@@ -13,6 +13,7 @@ require_once ('user.php');
 require_once ('system_log.php');
 require_once ('syslog.php');
 require_once ('security_question.php');
+require_once ('ajax_checker.php');
 
 # Dynamic Forms 
 require_once ("dynamic_form/df_form.php");
