@@ -81,7 +81,7 @@ function checkCounter(url,id_st,id_nw){
 	        //There was a change, rather then refreshing the entire page to the next comparison, we need a new counter value
 	        id_st.update(newCounter);
 	        //message list update.
-	        new Ajax.Updater('updateMe','ajax/msg.php');
+	        new Ajax.Updater('updateMe','msg.php');
 	        return false;
 	      }
 	    }

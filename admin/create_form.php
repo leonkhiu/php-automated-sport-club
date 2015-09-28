@@ -36,10 +36,12 @@ require_once ("layout/htmltop.php");
  * 7: paragraph
  * 8: Number
  */
- 
+/* 
 echo "<pre>";
 var_dump($_POST);
 echo "</pre>";
+*/
+
 
 if ($newForm) {
 
@@ -52,6 +54,9 @@ if ($newForm) {
 	if ($dFForm->save ()) {
 		$formID = $mydb->LastInsertedId ();
 		systemLog($uid, "Create a from with ID=".$formID);
+		#use for live score
+		$ajaxChecker->IncreaseById(1);
+		
 		$stepOne = true;
 	}
 	

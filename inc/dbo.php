@@ -96,6 +96,19 @@ class DBO{
 		return $mydb->execute($sql);
 	}
 	
+	public static function findLatest($limit = 13){
+		global $mydb;
+		//LSB
+		$className=get_called_class();
+		$object= new $className;
+		$sql = "SELECT * FROM ". $object::$tableName;
+		$sql.=" ORDER BY `id` DESC LIMIT 13";
+		
+		//$mydb->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
+		//$data = array($limit);
+		return $mydb->execute($sql);
+	}
+	
 	//FIXME fix this one as SQL injection
 	public static function findAllPagination($perPage, $offset, $DESC=false){
 		global $mydb;
