@@ -8,7 +8,7 @@
             <a href="viewall.php" class="list-group-item">View all</a>
             <a href="retrieve_form.php" class="list-group-item">Retrieve Forms</a>
             <a href="create_form.php" class="list-group-item">Create a new form</a>
-            <a href="#" class="list-group-item">Link</a>
+            <a href="submit_result.php" class="list-group-item">Submit result</a>
             <a href="logout.php" class="list-group-item">Log out</a>
             
           </div>
@@ -58,6 +58,7 @@
 		echo $additionalJS;
 	}
 	?>
+	<script src="../js/sport-club.js"></script>
 	
 	<!-- Sidebar nav active link -->
 	<script type="text/javascript">

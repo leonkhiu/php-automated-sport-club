@@ -30,11 +30,6 @@ function redirectTo($location = NULL) {
  * @return string as a HTML table
  */
 function showAll($objects, $columns, $view = false, $edit = false, $remove = false, $startId = 1) {
-	$hasID = false;
-	if (in_array("uid", $columns) || in_array("id", $columns)) {
-		$hasID = true;
-	}
-	
 	$result = "";
 	$result .= '<div class="table-responsive">
 	<table class="table table-hover table-condensed">
@@ -47,6 +42,13 @@ function showAll($objects, $columns, $view = false, $edit = false, $remove = fal
 		if ($column == "uid") {
 			$content = "Username";
 		}
+		if ($column == "first_team_id") {
+			$content = "Host";
+		}
+		if ($column == "second_team_id") {
+			$content = "Guest";
+		}
+		
 		$result .= "<th>$content</th>";
 	}
 	
@@ -84,17 +86,24 @@ function showAll($objects, $columns, $view = false, $edit = false, $remove = fal
 				} else {
 					$content = User::findUsernameById ( $object->$column );
 				}
+			} elseif($column == "first_team_id" || $column == "second_team_id"){
+				$content = Team::findNameById ( $object->$column );
+					
 			} else {
 				$content = $object->$column;
 			}
 			$result .= "<td>$content</td>";
 		}
-		if($hasID){
-			$id = (isset ( $object->id )) ? $object->id : $object->uid;
+	
+		if(isset($object->id)){
+			$id = $object->id;
+		} elseif(isset($object->uid )){
+			$id=$object->uid; 
 		} else{
-			//there is no ID
 			$id = 0;
 		}
+		
+		
 		if ($view) {
 			$viewLink = currentFile () . urlAddorChangeParaeter ( "viewId", $id );
 			$result .= "<td><a class='btn btn-default' role='button' href='$viewLink'>View</a></td>";
@@ -161,12 +170,15 @@ function systemLog($uid, $message) {
 function showMessage($messages) {
 	$output = "";
 	if (count ( $messages ) > 0) {
+		$output .= '<div class="alert alert-info alert-dismissible" role="alert">';
+		$output .= '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
 		foreach ( $messages as $message ) {
-			$output .= '<div class="alert alert-danger alert-dismissible" role="alert">';
-			$output .= '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+			$output .="- ";
 			$output .= $message;
-			$output .= '</div>';
+			$output .="<br>";
+			
 		}
+		$output .= '</div>';
 	}
 	return $output;
 }

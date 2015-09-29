@@ -11,14 +11,13 @@ if($previousFile == "signin.php"){
 	$welcomeAlert= true;
 }
 
-$additionalJS .='<script src="../js/sport-club.js"></script>';
+//$additionalJS .='<script src="../js/sport-club.js"></script>';
 
 require_once ("layout/htmltop.php");
 ?>
 <h2>Welcome <?php echo ucfirst($thisUser->fname)." ". ucfirst($thisUser->lname); ?>, <small>Production version</small></h2>
 
 <?php
-	
 	
 	//$user = User::findByID(50);
 	
