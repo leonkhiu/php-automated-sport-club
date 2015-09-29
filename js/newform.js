@@ -8,11 +8,11 @@ function increment(){
 	j=0;
 	i +=1;                         /* function for automatic increament of feild's "Name" attribute*/ 
 	
-	/*
+	
 	if(i>0){
 		document.getElementById("form-submit").className = "text-center";
 	}
-	*/
+	
 }
 function incrementJ(){
 	j +=1; /* function for automatic increament of feild's "Name" attribute for radio buttons and checkboxes*/	
@@ -74,7 +74,7 @@ function formElement(type) {
 	
 	var question = document.createElement("INPUT");
 	question.setAttribute("type", "text");
-	question.setAttribute("class", "form-control");
+	question.setAttribute("class", "form-control input-sm");
 	question.setAttribute("Name", "questionElement[]");
 	question.setAttribute("id", "questionElement_" + i);
 	question.setAttribute("required", "required");
@@ -93,7 +93,7 @@ function formElement(type) {
 		
 	var helpText = document.createElement("INPUT");	
 	helpText.setAttribute("type", "text");
-	helpText.setAttribute("class", "form-control");
+	helpText.setAttribute("class", "form-control input-sm");
 	helpText.setAttribute("Name", "helpElement[]");
 	helpText.setAttribute("id", "helpElement_" + i);
 	
@@ -112,7 +112,7 @@ function formElement(type) {
 			
 		var patternText = document.createElement("INPUT");	
 		patternText.setAttribute("type", "text");
-		patternText.setAttribute("class", "form-control");
+		patternText.setAttribute("class", "form-control input-sm");
 		patternText.setAttribute("Name", "patternRegex[]");
 		patternText.setAttribute("id", "patternRegex_" + i);
 		
@@ -146,7 +146,7 @@ function formElement(type) {
 			
 			var currentTime = h + ':' + m;
 			
-			demoContainer.innerHTML="<input type='time' class='form-control' value='"+ currentTime +"'>";
+			demoContainer.innerHTML="<input type='time' class='form-control input-sm' value='"+ currentTime +"'>";
 		} else if(type == "date"){
 			var currentDate = new Date();
 			 var dd = currentDate.getDate();
@@ -161,7 +161,7 @@ function formElement(type) {
 			 } 
 			 
 			 var today = yyyy+'-'+mm+'-'+dd;	
-			demoContainer.innerHTML="<input type='date' class='form-control' value='"+ today +"'>";
+			demoContainer.innerHTML="<input type='date' class='form-control input-sm' value='"+ today +"'>";
 		} else if(type == "paragraph"){
 			demoContainer.innerHTML="<textarea class='form-control input-sm' rows='3' disabled>&#10;&#13;Their longer answer</textarea>";
 			
@@ -249,7 +249,7 @@ function multipleChoice(optionsType) {
 	
 	var question = document.createElement("INPUT");
 	question.setAttribute("type", "text");
-	question.setAttribute("class", "form-control");
+	question.setAttribute("class", "form-control input-sm");
 	//question.setAttribute("Name", "questionElement_" + i);
 	question.setAttribute("Name", "questionElement[]");
 	question.setAttribute("id", "questionElement_" + i);
@@ -271,7 +271,7 @@ function multipleChoice(optionsType) {
 		
 	var helpText = document.createElement("INPUT");	
 	helpText.setAttribute("type", "text");
-	helpText.setAttribute("class", "form-control");
+	helpText.setAttribute("class", "form-control input-sm");
 	//helpText.setAttribute("Name", "helpElement_" + i);
 	helpText.setAttribute("Name", "helpElement[]");
 	helpText.setAttribute("id", "helpElement_" + i);
@@ -400,7 +400,7 @@ function addOptions(parentDiv, optionsType) {
 
 		optionContainer.appendChild(optionLabel); //
 		//optionTextContainer.innerHTML = "<input type='text' class='form-control required' name='option_"+ j + "' id='option_"+ j + "' placeholder='This text will be show in the final form' required>";
-		optionTextContainer.innerHTML = "<input type='text' class='form-control' name='multiOption_"+ parentNumber + "[]' placeholder='This text will be show in the final form' required>";
+		optionTextContainer.innerHTML = "<input type='text' class='form-control input-sm' name='multiOption_"+ parentNumber + "[]' placeholder='This text will be show in the final form' required>";
 		optionContainer.appendChild(optionTextContainer); //
 		optionContainer.appendChild(removeButton);
 		document.getElementById(parentDiv).appendChild(optionContainer);
@@ -438,6 +438,6 @@ functions  that will be called upon, when user click on the Reset Button
 */
 function resetElements() {
 	document.getElementById('myForm').innerHTML = '';
-	//hideElement('form-submit');
+	hideElement('form-submit');
 	i = 0;
 }

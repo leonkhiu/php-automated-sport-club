@@ -31,13 +31,13 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">Sport Club</a>
+						<a class="navbar-brand" href="index.php">Sport Club</a>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
 							<li><a href="#about">About</a></li>
 							<!-- <li class="active"><a href="#">Live scores</a></li> -->
-							<li><a href="#">Live scores</a></li>
+							<li><a href="live/">Live scores</a></li>
 							<li><a href="#">Tables</a></li>
 
 							<li class="dropdown"><a href="#" class="dropdown-toggle"

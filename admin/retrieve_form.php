@@ -148,6 +148,10 @@ foreach ($formElements as $element){
 					if(!empty($pattern)){
 						echo " pattern=\"$pattern\"";
 					}
+					
+					if($elementType == "number"){
+						echo " min='0'";
+					}
 					echo " placeholder=\"$helpText\" title=\"$helpText\" $required>";
 					if($elementType == "time" || $elementType == "date"){
 						if(!empty($helpText)){

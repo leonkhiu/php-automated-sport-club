@@ -166,7 +166,7 @@ if ($newForm) {
 	<span id="myForm" class="droppable"> <!-- Elements will be here --> </span>
 
 
-	<p class="text-center" id="form-submit">
+	<p class="text-center invisible" id="form-submit">
 		<input type="submit" value="submit" class="btn btn-primary"
 			name="newForm" />
 	</p>

@@ -10,6 +10,7 @@ require_once ('helper/pagination.php');
 
 # DB objects
 require_once ('user.php');
+require_once ('sport.php');
 require_once ('system_log.php');
 require_once ('syslog.php');
 require_once ('security_question.php');
