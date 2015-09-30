@@ -20,6 +20,9 @@ if($sweetAlertRequirement){
 if($jQueryUI){
 	echo '<link href="../css/jquery-ui.css" rel="stylesheet">';
 }
+if($fontAwesome){
+	echo '<link href="../css/font-awesome.min.css" rel="stylesheet">';
+}
 ?>
 <link href="../css/adminonly.css" rel="stylesheet">
 

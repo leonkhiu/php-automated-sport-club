@@ -105,7 +105,7 @@ function showAll($objects, $columns, $view = false, $edit = false, $remove = fal
 		
 		
 		if ($view) {
-			$viewLink = currentFile () . urlAddorChangeParaeter ( "viewId", $id );
+			$viewLink = currentFile () . urlAddorChangeParameter ( "viewId", $id );
 			$result .= "<td><a class='btn btn-default' role='button' href='$viewLink'>View</a></td>";
 		}
 		
@@ -138,7 +138,7 @@ function formToken() {
 	$tmp1 = (rand ( $yesterday, $today )) . uniqid ();
 	return hash ( "md5", $tmp1 );
 }
-function urlAddorChangeParaeter($parameter, $value) {
+function urlAddorChangeParameter($parameter, $value) {
 	$params = array ();
 	$output = "?";
 	$firstRun = true;

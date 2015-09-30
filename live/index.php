@@ -2,6 +2,7 @@
 require_once '../inc/initialise.php';
 
 $start = $ajaxChecker->checkCounter(1);
+$startScore = $ajaxChecker->checkCounter(1);
 
 $title = "Live";
 $additionalCss = '';
@@ -10,13 +11,22 @@ $additionalJS.= '<script src="../js/sport-club.js"></script>';
 $additionalJS.="
 		<script>
 			//Every half minute call a function check
-			setInterval(\"checkCounter('livescore.php',$('old_count'),$('new_count'));\",10000); 
+			setInterval(\"checkCounter('form_checker.php',$('old_count'),$('new_count'),'updateMe','forms.php');\",100000); 
 			// When the page is loading we set the initial counter value
 			window.onload=function(){
   				$('old_count').update('$start');
 			}
 		</script>
 		";
+		
+$additionalJS.="
+<script>
+	setInterval(\"checkCounter('score_checker.php',$('score_old_count'),$('score_new_count'),'updateMe2','scores.php');\",100000);
+	window.onload=function(){
+		$('old_count').update('$startScore');
+	}
+</script>
+";
 
 
 ?>
@@ -99,10 +109,16 @@ $additionalJS.="
 <div class="container">
 	<div class="row">
 	
+	<p id="score_old_count" class="hide"><?php echo $startScore; ?></p>
+	<p id="score_new_count" class="hide"></p>	
+	
+	<div id="updateMe2"><?php require_once 'scores.php'; ?></div>
+	
 	<p id="old_count" class="hide"><?php echo $start; ?></p>
 	<p id="new_count" class="hide"></p>	
 	
-	<div id="updateMe"><?php require_once 'msg.php'; ?></div>
+	<div id="updateMe"><?php //require_once 'forms.php'; ?></div>
+	
 	
 	</div>
 </div>

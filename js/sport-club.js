@@ -65,7 +65,7 @@ function systemlogdeletion(removeLink) {
 	});
 }
 
-function checkCounter(url, startID, newID) {
+function checkCounter(url, startID, newID, updatableID, dynamicFile) {
 	req = new Ajax.Request(url, {
 		contentType : 'text/html; charset=utf-8',
 		method : 'post',
@@ -81,7 +81,7 @@ function checkCounter(url, startID, newID) {
 				//There was a change, rather then refreshing the entire page to the next comparison, we need a new counter value
 				startID.update(newCounter);
 				//message list update.
-				new Ajax.Updater('updateMe', 'msg.php');
+				new Ajax.Updater(updatableID, dynamicFile);
 				return false;
 			}
 		}

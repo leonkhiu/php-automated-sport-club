@@ -117,18 +117,22 @@ class DBO{
 		$object= new $className;
 		$sql = "SELECT * FROM ". $object::$tableName;
 		$sql.=" LIMIT {$perPage} OFFSET {$offset}";
-		//$sql.=" LIMIT :skip OFFSET :ppage";
 		if($DESC){
 			$sql.=" ORDER BY `id` DESC";
 		}
-		//$data = array($perPage, $offset);
-		
-		//$mydb->bindValue(':skip',  (int)$perPage, PDO::PARAM_INT);
-		//$mydb->bindValue(':ppage', (int)$offset, PDO::PARAM_INT);
 		return $mydb->execute($sql);
+	}
+	
+	public static function findNameById($id){
+		global $mydb;
+		$className=get_called_class();
+		$object= new $className;
 		
-		
-		
+		$sql="SELECT `name` FROM `". $object::$tableName. "` WHERE (`id` = ?) LIMIT 1";
+		$parameter = array($id);
+		$result = $mydb->execute($sql, $parameter);
+		$result = array_shift($result);
+		return $result->name;
 	}
 	
 	public static function findByID($id=1){

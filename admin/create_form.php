@@ -47,6 +47,7 @@ if ($newForm) {
 
 	$dFForm->title = $_POST ["fromTitle"];
 	$dFForm->description = $_POST ["formDescription"];
+	$dFForm->sport_id = $_POST["formSport"];
 	$dFForm->date = time ();
 	$dFForm->token = formToken ();
 	$dFForm->uid = $uid;
@@ -159,6 +160,21 @@ if ($newForm) {
 		<div class="col-md-4 col-xs-3">
 			<input type="text" class="form-control" name="formDescription"
 				id="formDescription" placeholder="Describe the form in a sentence.">
+		</div>
+	</div>
+	
+	<div class="form-group last-group">
+		<label class="col-sm-4 control-label" for="formSport">Sport</label>
+		<div class="col-md-4 col-xs-3">
+			<select class="form-control" name="formSport" id="formSport">
+				<?php 
+					$sports = Sport::findAll();
+					foreach ($sports as $sport){
+						echo "<option value='$sport->id'>$sport->name</option>";
+					}
+				?>
+				<option value="0">General use</option>	
+			</select>
 		</div>
 	</div>
 

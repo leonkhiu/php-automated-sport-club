@@ -13,7 +13,7 @@ $totalPages = (round($total/$perPage) == 1)? 0 : round($total/$perPage);
 $pagination = new pagination($page, $perPage , $total);
 
 $formId= !empty($_GET['formId']) ? (int)$_GET['formId'] : 1;
-$viewId= !empty($_GET['viewId']) ? (int)$_GET['viewId'] : 1;
+$formId= !empty($_GET['viewId']) ? (int)$_GET['viewId'] : 1;
 
 
 $title = "Retrieve Forms-$uname";
@@ -61,7 +61,7 @@ $startId=($page-1) * $perPage;
 echo showAll ( $objects, $columns, true, true, true, $startId);
 echo "<div class='text-center'><ul id='pagination' class='agination-sm '></ul></div>";
 
-$form=DFForm::findByID($viewId);
+$form=DFForm::findByID($formId);
 $formElements=DFUserForm::findElements($form->id);
 
 echo "<h3>$form->title <small>$form->description</small></h3>";

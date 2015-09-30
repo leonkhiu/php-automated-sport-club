@@ -16,16 +16,8 @@ class Team extends DBO{
 	public $last_update;
 	public $update_uid;
 
-	public static function findNameById($id){
-		global $mydb;
-		$sql="SELECT `name` FROM `". self::$tableName. "` WHERE (`id` = ?) LIMIT 1";
-		$parameter = array($id);
-		$result = $mydb->execute($sql, $parameter);
-		$result = array_shift($result);
-		return $result->name;
-	}
 	
-} // end of : class Game
+} // end of : class Team
 $team=new Team();
 
 ?>

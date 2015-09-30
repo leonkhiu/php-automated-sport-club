@@ -5,10 +5,11 @@
 class DFForm extends DBO{
 
 	protected static $tableName="df_form";
-	protected static $tableFields=array('id', 'uid', 'title', 'description', 'token', 'permission_id', 'date', 'last_update', 'update_uid');
+	protected static $tableFields=array('id', 'uid', 'sport_id', 'title', 'description', 'token', 'permission_id', 'date', 'last_update', 'update_uid');
 	
 	public $id;
 	public $uid;
+	public $sport_id;
 	public $title;
 	public $description;
 	public $token;

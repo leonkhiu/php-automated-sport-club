@@ -11,6 +11,6 @@ $uid = isset($_SESSION ['uid'] )? $_SESSION ['uid'] : 0;
 $uname = isset($_SESSION['username']) ? $_SESSION ['username'] : null;
 $thisUser = User::findByID($uid);
 
-$sweetAlertRequirement = $welcomeAlert = $paginationRequirement = $jQueryUI = false;
+$sweetAlertRequirement = $welcomeAlert = $paginationRequirement = $jQueryUI = $fontAwesome = false;
 
 $additionalCss = $additionalJS ='';
