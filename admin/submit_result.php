@@ -253,6 +253,8 @@ function showAlll($uid, $objects, $columns, $startId = 1) {
 		}
 		
 		if(Score::isCorrect($object->id)){
+			Game::MakeDone($object->id);
+			
 			$gameStatus = "<span class='text-success'><i class='fa fa-check'></i> Done</span>";
 		}
 		

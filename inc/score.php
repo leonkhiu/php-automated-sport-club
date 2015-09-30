@@ -15,7 +15,8 @@ class Score extends DBO{
 	public $duration;
 	public $date;
 	public $update_uid;
-	
+
+		
 	public static function findByUidGameId($uid, $gameId){
 		global $mydb;
 		$sql="SELECT * FROM `". self::$tableName. "` WHERE (`update_uid` = ?) AND(`game_id` = ?) LIMIT 1";
@@ -23,7 +24,7 @@ class Score extends DBO{
 		$found = $mydb->execute($sql, $parameter);
 		return !empty($found)? array_shift($found) : false;
 	}
-	
+		
 	public static function isCorrect($gameId){
 		global $mydb;
 		$sql="SELECT * FROM `". self::$tableName. "` WHERE (`game_id` = ?)";
@@ -63,8 +64,7 @@ class Score extends DBO{
 			}
 		}
 	}
-	
-	
+		
 	public static function hasUserSubmitted($uid, $gameId){
 		global $mydb;
 		$sql="SELECT COUNT(*) as total FROM `". self::$tableName. "` WHERE (`update_uid` = ?) AND(`game_id` = ?)";

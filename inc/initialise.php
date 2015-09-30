@@ -11,6 +11,7 @@ require_once ('helper/pagination.php');
 # DB objects
 require_once ('user.php');
 require_once ('sport.php');
+require_once ('sport_scoring.php');
 require_once ('score.php');
 require_once ('team.php');
 require_once ('groups.php');

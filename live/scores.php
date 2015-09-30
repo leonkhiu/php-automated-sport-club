@@ -4,14 +4,12 @@ require_once ('../inc/initialise.php');
 $sportId = (isset($_GET['sportId'])) ? (int)$_GET['sportId'] : 1;
 $groupId = (isset($_GET['groupId'])) ? (int)$_GET['groupId'] : 1;
 
-$games = Game::inTournament(1, 1, true) ;
-// echo showAll ( $objects, $columns, false, false, false, 0);
-
-
 $sports = $sport->findAll();
 if($sportId > 0){
 	$groups = $groups->findBySportID($sportId);
 }
+$sportScoring = SportScoring::findBySportId($sportId);
+
 if($groupId > 0){
 	$groupTeams = $groupTeam->findBygroupID($groupId);
 }
@@ -25,6 +23,17 @@ foreach ($groupTeams as $team){
 }
 $rankingTable[] = $teams;
 $rankingTable[] = $teamName;
+
+
+$gameId = $team1_Id = $team2_Id = array();
+$games = $game->findByGroupId($groupId, true);
+foreach ($games as $game){
+	$team1_Id[] = $game->first_team_id;
+	$team2_Id[] = $game->second_team_id;
+	$gameId[] = $game->id;
+}
+
+$gameResult= Score::gameResult($gameId);
 
 
 
