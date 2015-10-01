@@ -49,9 +49,8 @@ class Score extends DBO{
 		//All return result is for the HOST team
 		if (self::isCorrect ( $gameId )) {
 			$sql = "SELECT * FROM `" . self::$tableName . "` WHERE (`game_id` = ?) LIMIT 1";
-			$parameter = array (
-					$gameId 
-			);
+			$parameter = array ( $gameId );
+			
 			$result = $mydb->execute ( $sql, $parameter );
 			$result = array_shift ( $result );
 			
@@ -64,7 +63,30 @@ class Score extends DBO{
 			}
 		}
 	}
-		
+	
+	public static function pointDifference($gameId) {
+		global $mydb;
+	
+		if (self::isCorrect ( $gameId )) {
+			$sql = "SELECT * FROM `" . self::$tableName . "` WHERE (`game_id` = ?) LIMIT 1";
+			$parameter = array ( $gameId );				
+			$result = $mydb->execute ( $sql, $parameter );
+			$result = array_shift ( $result );				
+			return ((int)$result->t1_point - (int)$result->t2_point);
+		}
+	}
+	
+	public static function findByGameId($gameId) {
+		global $mydb;
+		if (self::isCorrect ( $gameId )) {
+			$sql = "SELECT * FROM `" . self::$tableName . "` WHERE (`game_id` = ?) LIMIT 1";
+			$parameter = array ( $gameId );
+			$result = $mydb->execute ( $sql, $parameter );
+			return array_shift ( $result );
+		}
+		return false;
+	}
+	
 	public static function hasUserSubmitted($uid, $gameId){
 		global $mydb;
 		$sql="SELECT COUNT(*) as total FROM `". self::$tableName. "` WHERE (`update_uid` = ?) AND(`game_id` = ?)";

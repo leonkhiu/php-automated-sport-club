@@ -22,7 +22,6 @@ class SportScoring extends DBO{
 		return !empty($found)? array_shift($found) : false;
 	}
 	
-	
 } // end of : class SportScoring
 $sportScoring=new SportScoring();
 
