@@ -35,20 +35,29 @@ footer {
     width: 20px;
 }
 .glyphicon {
-    opacity: 1;
+    opacity: 0.5;
+    /*
     -webkit-transition: opacity 2s ease-in-out, -webkit-transform 2s;
     -moz-transition: opacity 2s ease-in-out, transform 2s;
     -ms-transition: opacity 2s ease-in-out, transform 2s;
     -o-transition: opacity 2s ease-in-out, transform 2s;
     transition: opacity 2s ease-in-out, transform 2s;
+    */
+    -webkit-transition: opacity 2s;
+    -moz-transition: opacity 2s;
+    -ms-transition: opacity 2s;
+    -o-transition: opacity 2s;
+    transition: opacity 2s;    
 }
 .glyphicon:hover {
-    opacity: 0.4;
+    opacity: 1;
+    /*
     -webkit-transform: rotate(360deg);
     -moz-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
     -o-transform: rotate(360deg);
     transform: rotate(360deg);
+    */
 }
 .glyphicon-log {
     padding-left: 20px;
@@ -75,7 +84,7 @@ div.formElement:hover {
     margin-bottom: 5px !important;
 }
 
-/*******************************End in new form**********************************/
+
 /*
  * Off Canvas
  * --------------------------------------------------

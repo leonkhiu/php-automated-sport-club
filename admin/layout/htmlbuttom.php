@@ -9,6 +9,9 @@
             <a href="retrieve_form.php" class="list-group-item">Retrieve Forms</a>
             <a href="create_form.php" class="list-group-item">Create a new form</a>
             <a href="submit_result.php" class="list-group-item">Submit result</a>
+            <a href="manage.php" class="list-group-item">Manage</a>
+            <a href="submit_result.php" class="list-group-item">----</a>
+            <a href="submit_result.php" class="list-group-item">----</a>
             <a href="logout.php" class="list-group-item">Log out</a>
             
           </div>
