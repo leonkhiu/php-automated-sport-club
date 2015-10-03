@@ -20,6 +20,13 @@ class Groups extends DBO{
 		return $mydb->execute($sql, $data);
 	}
 	
+	public static function findBySportIdTournamentId($sportId=1, $tournamentId= 1){
+		global $mydb;
+		$sql="SELECT * FROM `". self::$tableName. "` WHERE (`sport_id`=?) AND (`tournament_id` = ?)";
+		$data = array($sportId, $tournamentId);
+		return $mydb->execute($sql, $data);
+	}
+	
 	
 } // end of : class Groups
 $groups=new Groups();

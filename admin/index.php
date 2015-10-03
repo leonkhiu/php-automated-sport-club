@@ -64,5 +64,5 @@ require_once ("layout/htmltop.php");
 */
 
 
-require_once ('layout/htmlbuttom.php');;
+require_once ('layout/htmlbuttom.php');
 ?>

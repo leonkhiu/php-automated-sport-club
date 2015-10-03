@@ -87,3 +87,9 @@ function checkCounter(url, startID, newID, updatableID, dynamicFile) {
 		}
 	});
 }
+
+function showMe(element){
+	//$(this).attr("class", "formElement draggable order" + i);
+	//$(this).addClass("order" + i);
+	$("#" + element ).hide(1000);
+}
