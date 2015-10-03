@@ -49,6 +49,18 @@ function showAll($objects, $columns, $view = false, $edit = false, $remove = fal
 			$content = "Guest";
 		}
 		
+		if ($column == "club_id") {
+			$content = "Club";
+		}
+		
+		if ($column == "sport_id") {
+			$content = "Sport";
+		}
+		
+		if ($column == "tournament_id") {
+			$content = "Tournament";
+		}
+		
 		$result .= "<th>$content</th>";
 	}
 	
@@ -67,7 +79,7 @@ function showAll($objects, $columns, $view = false, $edit = false, $remove = fal
       </thead>
       <tbody>";
 	foreach ( $objects as $object ) {
-		$startId ++;
+		
 		$result .= "
 		<tr >
 		<td>$startId</td>";
@@ -89,7 +101,13 @@ function showAll($objects, $columns, $view = false, $edit = false, $remove = fal
 			} elseif($column == "first_team_id" || $column == "second_team_id"){
 				$content = Team::findNameById ( $object->$column );
 					
-			} else {
+			}elseif($column == "club_id"){
+				$content = Club::findNameById($object->club_id);			
+			}elseif($column == "sport_id"){
+				$content = Sport::findNameById($object->sport_id);
+			} elseif($column == "tournament_id"){	
+				$content = Tournament::findNameById($object->tournament_id);
+			}else {
 				$content = $object->$column;
 			}
 			$result .= "<td>$content</td>";
@@ -121,6 +139,7 @@ function showAll($objects, $columns, $view = false, $edit = false, $remove = fal
 		}
 		
 		$result .= "</tr>";
+		$startId ++;
 	}
 	
 	$result .= "
