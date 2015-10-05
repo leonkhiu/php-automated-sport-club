@@ -95,6 +95,7 @@ class Score extends DBO{
 		return (count($result) > 0 && array_shift($result)->total > 0)? true : false;
 	}
 	
+	
 } // end of : class Score
 $score=new Score();
 

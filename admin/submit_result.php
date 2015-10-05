@@ -26,7 +26,7 @@ if(isset($_POST['submitResult'])){
 	
 	if( (((int)$game->date) + 18000) < time()){
 		
-		$score->game_id =  $_POST ['gameId'] ;
+		$score->game_id = $gameId =  $_POST ['gameId'] ;
 		
 		$inputElement = $_POST["inputElement"];
 		$score->t1_point = $inputElement[0];
@@ -35,8 +35,11 @@ if(isset($_POST['submitResult'])){
 		$score->update_uid = $uid;
 		$score->date = time();
 		if($score->save()){
-			#use for live score
-			$ajaxChecker->IncreaseById(2);
+			
+			if(Score::isCorrect($gameId)){
+				Game::MakeDone($gameId);
+				$ajaxChecker->IncreaseById(2);
+			}
 			
 			$messages = array();
 			$messages[] = "The game result has been saved.";
@@ -45,20 +48,21 @@ if(isset($_POST['submitResult'])){
 		$messages[] = "You are not allow to enter the game result before 5 hours.";
 	}
 	
-	/*
-	echo "<pre>";
-	var_dump($_POST);
-	echo "</pre>";
-	*/
 }
 
+/*
+ echo "<pre>";
+ var_dump($_POST);
+ echo "</pre>";
+ */
+ 
 
 $additionalJSs ="
 		<script>
 			$(document).ready(function(){
 			  $('#gameResult').on('submit',function(e) {  //Don't foget to change the id form
 			  $.ajax({
-			      url:'subMitgaMereSult.php', //===PHP file name====
+			      url:'ajax/subMitgaMereSult.php', //===PHP file name====
 			      data:$(this).serialize(),
 			      type:'POST',
 			      success:function(data){
@@ -89,7 +93,9 @@ if (! $noGames) {
 	echo showAlll ($uid, $objects, $columns, 0 );
 }
 
-if ($formId > 0) {
+if(!Score::hasUserSubmitted($uid, $gameId) && $formId > 0){
+
+//if ($formId > 0) {
 	
 	$form = DFForm::findByID ( $formId );
 	$formElements = DFUserForm::findElements ( $form->id );

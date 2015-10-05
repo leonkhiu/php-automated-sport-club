@@ -11,7 +11,6 @@
             <a href="submit_result.php" class="list-group-item">Submit result</a>
             <a href="manage.php" class="list-group-item">Manage</a>
             <a href="set_game.php" class="list-group-item">Games</a>
-            <a href="submit_result.php" class="list-group-item">----</a>
             <a href="logout.php" class="list-group-item">Log out</a>
             
           </div>

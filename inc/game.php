@@ -58,8 +58,9 @@ class Game extends DBO{
 		global $mydb;
 		$sql="SELECT `done` FROM `". self::$tableName. "` WHERE (id = ?)";
 		$parameter = array($id);
-		$mydb->execute($sql, $parameter);
+		$result = $mydb->execute($sql, $parameter);
 		$result = array_shift($result);
+		//return $result;
 		return ($result->done == 1)? true : false;
 		
 	}

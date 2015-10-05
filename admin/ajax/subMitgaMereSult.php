@@ -5,9 +5,10 @@ $formId = $_POST ['formId'] ;
 
 $game = Game::findByID($_POST ['gameId']);
 
+//at least 5 hours after the game
 if( (((int)$game->date) + 18000) < time()){
 
-	$score->game_id =  $_POST ['gameId'] ;
+	$score->game_id = $gameId =  $_POST ['gameId'] ;
 
 	$inputElement = $_POST["inputElement"];
 	$score->t1_point = $inputElement[0];
@@ -16,4 +17,11 @@ if( (((int)$game->date) + 18000) < time()){
 	$score->update_uid = $uid;
 	$score->date = time();
 	$score->save();
+	
+	
+	if(Score::isCorrect($gameId)){
+		Game::MakeDone($gameId);
+		$ajaxChecker->IncreaseById(2);
+	}
+	
 }
