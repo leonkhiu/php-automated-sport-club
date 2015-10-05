@@ -5,10 +5,11 @@ require_once ('database.php');
 class Game extends DBO{
 
 	protected static $tableName="game";
-	protected static $tableFields=array('id', 'group_id', 'first_team_id', 'second_team_id', 'date', 'update_uid', 'done');
+	protected static $tableFields=array('id', 'group_id', 'form_id', 'first_team_id', 'second_team_id', 'date', 'update_uid', 'done');
 	
 	public $id;
 	public $group_id;
+	public $form_id;
 	public $first_team_id;
 	public $second_team_id;
 	public $date;
@@ -20,6 +21,13 @@ class Game extends DBO{
 		global $mydb;
 		$sql="SELECT * FROM `". self::$tableName. "` WHERE (`first_team_id`=?) OR (`second_team_id`=?)";
 		$data = array($teamId, $teamId);
+		return $mydb->execute($sql, $data);
+	}
+	
+	public static function findByFirstTeamID($teamId=1){
+		global $mydb;
+		$sql="SELECT * FROM `". self::$tableName. "` WHERE (`first_team_id`=?)";
+		$data = array($teamId);
 		return $mydb->execute($sql, $data);
 	}
 	
@@ -37,17 +45,6 @@ class Game extends DBO{
 		}
 		$data = array($groupId);
 		return $mydb->execute($sql, $data);
-	}
-	
-	//TODO: delete this one
-	public static function inTournament($sportId, $tournamentId, $done = false){
-		global $mydb;
-		$sql="SELECT * FROM `". self::$tableName. "` WHERE (`sport_id` = ?) AND(`tournament_id` = ?)";
-		if($done){
-			$sql.= " AND (`done` = 1)";
-		}
-		$parameter = array($sportId, $tournamentId);
-		return $mydb->execute($sql, $parameter);
 	}
 	
 	public static function MakeDone($id){

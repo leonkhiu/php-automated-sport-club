@@ -18,13 +18,17 @@ class DFUserForm extends DBO{
 	
 	public static function findElements($formId){
 		global $mydb;
-		$className=get_called_class();
-		$object= new $className;
-		$sql="SELECT * FROM ". $object::$tableName. " WHERE (`form_id`=?)";
+		$sql="SELECT * FROM ". self::$tableName. " WHERE (`form_id`=?)";
 		$data = array($formId);
 		return $mydb->execute($sql, $data);	
 	}
 	
+	public static function removebyFormId($formId){
+			global $mydb;
+			$sql="DELETE FROM `". self::$tableName."` WHERE(`form_id`= ?)";
+			$data = array($formId);
+			return ($mydb->execute($sql, $data)) ? true : false;		
+	}
 	
 }
 

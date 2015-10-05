@@ -92,6 +92,10 @@ class myPDO {
 		return $this->link->errorInfo();
 		
 	}
+
+	public function quoteString($string){
+		return $this->link->quote($string);
+	}
 }
 
 $mydb = new myPDO ();

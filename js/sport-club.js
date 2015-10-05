@@ -88,8 +88,9 @@ function checkCounter(url, startID, newID, updatableID, dynamicFile) {
 	});
 }
 
-function showMe(element){
+function showMe(element, className){
 	//$(this).attr("class", "formElement draggable order" + i);
-	//$(this).addClass("order" + i);
-	$("#" + element ).hide(1000);
+	document.getElementById(element).className = className;
+	$(this).addClass("");
+	//$("#" + element ).hide(1000);
 }

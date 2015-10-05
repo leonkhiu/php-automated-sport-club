@@ -145,6 +145,15 @@ class DBO{
 		return !empty($found)? array_shift($found) : false;
 	}
 	
+	public static function findByField($fieldName, $fieldValue){
+		global $mydb;
+		$className=get_called_class();
+		$object= new $className;
+		$sql="SELECT * FROM `". $object::$tableName. "` WHERE (`$fieldName`=?)";
+		$data = array($fieldValue);
+		return $mydb->execute($sql, $data);
+	}	
+	
 	public static function removeByID($id=0){
 		global $mydb;
 		$className=get_called_class();

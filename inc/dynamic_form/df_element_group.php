@@ -14,13 +14,18 @@ class DFElementGroup extends DBO{
 		
 	public static function findChildren($formId, $parentId){
 		global $mydb;
-		$className=get_called_class();
-		$object= new $className;
-		$sql="SELECT * FROM ". $object::$tableName. " WHERE (`form_id`=?) AND (`parent_id`=?)";
+		$sql="SELECT * FROM ". self::$tableName. " WHERE (`form_id`=?) AND (`parent_id`=?)";
 		$data = array($formId, $parentId);
 		return $mydb->execute($sql, $data);
 	}
 
+	public static function removebyFormId($formId){
+		global $mydb;
+		$sql="DELETE FROM `". self::$tableName."` WHERE(`form_id`= ?)";
+		$data = array($formId);
+		return ($mydb->execute($sql, $data)) ? true : false;
+	}
+	
 }
 $dFElementGroup = new DFElementGroup();
 

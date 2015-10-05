@@ -12,9 +12,21 @@ $total=DFForm::countAll();
 $totalPages = (round($total/$perPage) == 1)? 0 : round($total/$perPage);
 $pagination = new pagination($page, $perPage , $total);
 
-$formId= !empty($_GET['formId']) ? (int)$_GET['formId'] : 1;
-$formId= !empty($_GET['viewId']) ? (int)$_GET['viewId'] : 1;
+$formId= !empty($_GET['formId']) ? (int)$_GET['formId'] : null;
+$formId= !empty($_GET['viewId']) ? (int)$_GET['viewId'] : null;
 
+$delFormId = !empty($_GET['delId']) ? (int)$_GET['delId'] : null;
+if(isset($delFormId)){
+	//TODO:: check it before delete, user permission
+	$dFForm->id = $delFormId;
+	
+	DFElementGroup::removebyFormId($delFormId);
+	if(DFUserForm::removebyFormId($delFormId)){
+		if($dFForm->delete()){
+			$messages[] = "The form has been deleted! :(";
+		}
+	}
+}
 
 $title = "Retrieve Forms-$uname";
 
@@ -33,7 +45,6 @@ $additionalJS = $confirmJqueryUIJS;
 */
 
 
-//$additionalJS .='<script src="../js/sport-club.js"></script>';
 $additionalJS .="
 		<script>
 		   $('#pagination').twbsPagination({
@@ -57,10 +68,11 @@ $columns = array (
 		"description",
 		"date" 
 );
-$startId=($page-1) * $perPage;
+$startId=(($page-1) * $perPage) + 1;
 echo showAll ( $objects, $columns, true, true, true, $startId);
 echo "<div class='text-center'><ul id='pagination' class='agination-sm '></ul></div>";
 
+if(isset($formId)){
 $form=DFForm::findByID($formId);
 $formElements=DFUserForm::findElements($form->id);
 
@@ -171,6 +183,7 @@ echo "<button type='submit' class='btn btn-primary'>Submit</button>";
 echo "</div>";
 echo "</div>";
 echo "</form>";
+}
 #----------------------------------------Form end
 
 
