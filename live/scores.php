@@ -140,7 +140,7 @@ $FinalArray = array_reverse ( $teamTotalPoints );
 
 // ////////////////////////////////////////////////////output
 
-echo "<ul class='nav nav-tabs nav-justified'>";
+echo "<ul class='nav nav-tabs'>";
 foreach ( $sports as $sport ) {
 	echo "<li role='presentation'";
 	if ($sport->id == $sportId) {

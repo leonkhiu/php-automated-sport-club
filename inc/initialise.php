@@ -29,7 +29,6 @@ require_once ('ajax_checker.php');
 require_once ("dynamic_form/df_form.php");
 require_once ("dynamic_form/df_element.php");
 require_once ("dynamic_form/df_element_group.php");
-require_once ("dynamic_form/df_answer.php");
 require_once ("dynamic_form/df_user_form.php");
 
 

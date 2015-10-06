@@ -7,8 +7,7 @@ $showLogs = false;
 $viewType = isset($_GET['type'])? $_GET['type'] : "log";
 $logLink  = $currentFile. "?type=log";
 $userLink = $currentFile. "?type=user";
-$sportLink = $currentFile. "?type=sport";
-$tabLogClass = $tabUserClass = $tabSportClass ="";
+$tabLogClass = $tabUserClass = "";
 
 //pagination variable preparation
 $page= !empty($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -22,10 +21,6 @@ switch ($viewType){
 	case "log":
 		$total=SystemLog::countAll();
 		$tabLogClass="active";
-		break;
-	case "sport":
-		$total=Sport::countAll();
-		$tabSportClass="active";
 		break;
 }
 
@@ -75,13 +70,6 @@ require_once ("layout/htmltop.php");
 echo "<ul class='nav nav-tabs'>";
   echo "<li role='presentation' class='$tabLogClass'><a href='$logLink'>System Log</a></li>";
   echo "<li role='presentation' class='$tabUserClass'><a href='$userLink'>Users</a></li>";
-  echo "<li role='presentation' class='$tabSportClass'><a href='$sportLink'>Sports</a></li>";
-  echo "<li role='presentation' class=''><a href=''>More</a></li>";
-  echo "<li role='presentation' class=''><a href=''>More</a></li>";
-  echo "<li role='presentation' class=''><a href=''>More</a></li>";
-  echo "<li role='presentation' class=''><a href=''>More</a></li>";
-  echo "<li role='presentation' class=''><a href=''>More</a></li>";
-  echo "<li role='presentation' class=''><a href=''>More</a></li>";
 echo "</ul>";
 
 echo moreSpace();
@@ -98,13 +86,7 @@ switch ($viewType) {
 		$columns=array("username", "message", "date");
 		$result = showAll($objects, $columns, false, false, false, $startId);
 		$showLogs = true;
-		break;
-	case "sport":
-		$objects = Sport::findAllPagination($perPage, $pagination->offset());
-		$columns=array("name");
-		$result = showAll($objects, $columns, false, false, false, $startId);
-		break;
-		
+		break;		
 }
 
 

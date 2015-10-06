@@ -24,6 +24,7 @@ if(isset($delFormId)){
 	if(DFUserForm::removebyFormId($delFormId)){
 		if($dFForm->delete()){
 			$messages[] = "The form has been deleted! :(";
+			systemLog($uid, "Remove a from with ID=".$delFormId);
 		}
 	}
 }
@@ -69,7 +70,7 @@ $columns = array (
 		"date" 
 );
 $startId=(($page-1) * $perPage) + 1;
-echo showAll ( $objects, $columns, true, true, true, $startId);
+echo showAll ( $objects, $columns, true, false, true, $startId);
 echo "<div class='text-center'><ul id='pagination' class='agination-sm '></ul></div>";
 
 if(isset($formId)){

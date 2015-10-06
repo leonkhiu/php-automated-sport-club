@@ -27,6 +27,14 @@ class Groups extends DBO{
 		return $mydb->execute($sql, $data);
 	}
 	
+	public static function findByName($name){
+		global $mydb;
+		$sql="SELECT * FROM `". self::$tableName. "` WHERE (`name`=?) ORDER BY `date` DESC";
+		$data = array($name);
+		return $mydb->execute($sql, $data);
+	}
+	
+	
 	
 } // end of : class Groups
 $groups=new Groups();

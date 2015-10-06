@@ -20,10 +20,6 @@ $additionalJS .="<script>
 	});
 	</script>";
 	
-require_once ("layout/htmltop.php");
-
-
-/*********************Content******************************/
 //echo "<h2>View all...</h2>";
 
 /* Element static ID
@@ -142,6 +138,9 @@ if ($newForm) {
 		} 
 	}// end of $stepOne
 }
+require_once ("layout/htmltop.php");
+/*********************Content******************************/
+
 
 ?>
 

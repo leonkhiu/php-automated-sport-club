@@ -1,5 +1,6 @@
 <?php 
 $title = "Home";
+$currentFile=basename ( $_SERVER ['PHP_SELF'] );
 $additionalCss = '<link href="css/carousel.css" rel="stylesheet">';
 $additionalJS = '';
 require_once ("page/publictop.php");

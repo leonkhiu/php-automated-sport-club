@@ -1,7 +1,6 @@
 .login-form{
 	min-height: 200px;	
 	height: 300px;
-	
 }
 
 .middle{
@@ -9,3 +8,9 @@
 	top: 50%;
 	transform: translateY(-50%);
 }
+
+*/*
+.navbar-wrapper .navbar .container {
+    width: auto;
+}
+*/

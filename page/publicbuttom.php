@@ -5,7 +5,7 @@
 		<footer>
 			
 			<p>
-				&copy; 2015 Sport Club, Inc. &middot; <a href="#">Privacy</a>
+				&copy; 2015 AutomatedSportClub, Inc. &middot; <a href="#">Privacy</a>
 				&middot; <a href="#">Terms</a>
 			</p>
 		</footer>
@@ -32,6 +32,19 @@
 	<!--<![endif]-->
 
 	<script src="js/bootstrap.min.js"></script>
+	
+	<script type="text/javascript">
+		var links = $('#navbar-link-container').find('a');
+		//var currentHref;
+		for (index = 0; index < links.length; ++index) {
+		    if((links[index].getAttribute("href")) == "<?php echo $currentFile?>"){
+		    	links[index].parentElement.classList.add('active');
+		    	//links[index].classList.add('active');
+			    }
+		}
+		console.log(links.length);
+		
+</script>
 		
 	<?php echo $additionalJS;?>
 </body>

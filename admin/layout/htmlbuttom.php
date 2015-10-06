@@ -5,14 +5,12 @@
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
           <div class="list-group">
             <a href="index.php" class="list-group-item">Home</a>
-            <a href="viewall.php" class="list-group-item">View all</a>
+            <a href="viewall.php" class="list-group-item">My Admin</a>
             <a href="retrieve_form.php" class="list-group-item">Retrieve Forms</a>
             <a href="create_form.php" class="list-group-item">Create a new form</a>
             <a href="submit_result.php" class="list-group-item">Submit result</a>
             <a href="manage.php" class="list-group-item">Manage</a>
-            <a href="set_game.php" class="list-group-item">Games</a>
-            <a href="logout.php" class="list-group-item">Log out</a>
-            
+            <a href="set_game.php" class="list-group-item">New Event</a>
           </div>
         </div><!--/.sidebar-offcanvas-->
       </div><!--/row-->
@@ -20,7 +18,7 @@
       <hr>
 
       <footer>
-        <p>&copy; Company <?php echo date("Y", time()); ?></p>
+        <p>&copy; AutomatedSportClub <?php echo date("Y", time()); ?></p>
       </footer>
 
     </div><!--/.container-->
@@ -65,7 +63,7 @@
 	<!-- Sidebar nav active link -->
 	<script type="text/javascript">
 		var links = $('#sidebar').find('a');
-		var currentHref
+		//var currentHref
 		for (index = 0; index < links.length; ++index) {
 		    if((links[index].getAttribute("href")) == "<?php echo $currentFile?>"){
 		    	links[index].classList.add('active');	

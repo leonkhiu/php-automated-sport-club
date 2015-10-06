@@ -9,50 +9,35 @@ if(cookieLogin(WEBSITE_NAME.'_uname', WEBSITE_NAME.'_pass')){
 if ($session->isLoggedIn()){
 	redirectTo ( "admin/index.php" );
 }
-
-
-$sq = SecurityQuestion::randomOne();
 #-------------------------Form submition
 if(isset($_POST["signin"])){
-	$sqId = $_POST['securityQuestionId'];
-	$sQuestion = SecurityQuestion::findByID($sqId);
-	if($sQuestion){
-		$correctAnswer = ($sQuestion->answer == strtolower($_POST['answer']))? true : false;			
-		}
-	if($correctAnswer){
-		$uname		=trim($_POST['uname']);
-		$password	=$_POST['password'];
-		$thisUser = User::authentication($uname, makeHash($password));
-		if($thisUser){
-			if(User::isAcrive($thisUser->id)){
-				$session->login($thisUser);
-				systemLog($thisUser->id, "Logged in");
-				if(isset($_POST['rememberMe'])){
-					//cookie
-					rememberMe(true, $uname, makeHash($password));
-				}
-				redirectTo("admin/index.php");
-			}else{
-				// is not active
-				$messages[] = "This user is not active!";
-				unset($thisUser);
+	$uname		=trim($_POST['uname']);
+	$password	=$_POST['password'];
+	$thisUser = User::authentication($uname, makeHash($password));
+	if($thisUser){
+		if(User::isAcrive($thisUser->id)){
+			$session->login($thisUser);
+			systemLog($thisUser->id, "Logged in");
+			if(isset($_POST['rememberMe'])){
+				//cookie
+				rememberMe(true, $uname, makeHash($password));
 			}
-		} else{
-			//user not found
-			$messages[] = "Incorrect username or password!";
+			redirectTo("admin/index.php");
+		}else{
+			// is not active
+			$messages[] = "This user is not active!";
+			unset($thisUser);
 		}
-	} else {
-		// answer is not correct
-		$messages[] = "Your answer is not correct!";
+	} else{
+		//user not found
+		$messages[] = "Incorrect username or password!";
 	}
-		
 }
 
 $title = "Sign in";
 $additionalCss = '<link href="css/custom.css" rel="stylesheet">';
 $additionalJS = '';
 require_once ("page/publictop.php");
-
 ?>
 <div class="container">
 <?php echo showMessage($messages); ?>
@@ -69,12 +54,6 @@ require_once ("page/publictop.php");
 			<input type="password" class="form-control" id="inputPassword3"	placeholder="Password" name="password" required="required">			
 		</div>
 		
-		<div class="form-group">
-			<label for="securityInput"><?php echo $sq->question; ?></label>			
-			<input type="text" class="form-control" id="securityInput" name="answer" placeholder="Not case sensetive" required="required">
-			<input type="hidden" name="securityQuestionId" value="<?php echo $sq->id; ?>">			
-		</div>
-		
 		<div class="form-group">			
 			<div class="checkbox">
 				<label> <input type="checkbox" name="rememberMe"> Remember me	</label>				
@@ -87,7 +66,6 @@ require_once ("page/publictop.php");
 			</div>
 		</div>
 	</form>
-</div>
 </div>
 <?php
 require_once ("page/publicbuttom.php");
