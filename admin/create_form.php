@@ -165,7 +165,8 @@ require_once ("layout/htmltop.php");
 	<div class="form-group last-group">
 		<label class="col-sm-4 control-label" for="formSport">Sport</label>
 		<div class="col-md-4 col-xs-3">
-			<select class="form-control" name="formSport" id="formSport">
+			<select class="form-control" name="formSport" id="formSport" required="required">
+				<option value="">Choose the sport</option>
 				<?php 
 					$sports = Sport::findAll();
 					foreach ($sports as $sport){

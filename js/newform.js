@@ -6,9 +6,8 @@ var maxOptions = 4; // the counter start at 0, total is 4
 
 function increment(){
 	j=0;
-	i +=1;                         /* function for automatic increament of feild's "Name" attribute*/ 
-	
-	
+	i +=1;/* function for automatic increament of feild's "Name" attribute*/ 
+		
 	if(i>0){
 		document.getElementById("form-submit").className = "text-center";
 	}
@@ -34,6 +33,13 @@ function removeElement(parentDiv, childDiv) {
 		var child = document.getElementById(childDiv);
 		var parent = document.getElementById(parentDiv);
 		parent.removeChild(child);
+		
+		var totalElements = document.getElementById("myForm").getElementsByTagName('div').length;
+		//console.log("totalElements " + totalElements);
+		if(totalElements < 1){
+			hideElement('form-submit');
+		}
+		
 	} else {
 		alert("Child div has already been removed or does not exist.");
 		return false;
@@ -41,16 +47,18 @@ function removeElement(parentDiv, childDiv) {
 
 	var totalOptions = (document.getElementById(parentDiv)
 			.getElementsByTagName('input').length) / 2;
-	console.log("totalOptions " + totalOptions);
+	//console.log("totalOptions " + totalOptions);
 	if (totalOptions <= maxOptions) {
 
 		var div = document.getElementById("addOptionContainer_" + i);
 		var spans = div.getElementsByTagName("span");
 		var addOptionSpanID = spans[spans.length - 1].id;
 		var thisElement = document.getElementById(addOptionSpanID);
-		console.log("addOptionSpanID " + addOptionSpanID);
+		//console.log("addOptionSpanID " + addOptionSpanID);
 		thisElement.className = "glyphicon glyphicon-plus";
 	}
+	
+	
 }
 
 function formElement(type) {
