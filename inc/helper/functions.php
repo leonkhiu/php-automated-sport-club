@@ -237,4 +237,119 @@ function rememberMe($rememberMe, $uname = '', $pass = '') {
 		}
 	}
 }
+
+
+function showForm($formId){
+
+	$result = "";
+	$form=DFForm::findByID($formId);
+	$formElements=DFUserForm::findElements($form->id);
+
+	$result.= "<h3>$form->title <small>$form->description</small></h3>";
+	#----------------------------------------Form begin
+	$result.= "<form method='post' name=\"$form->title\" class='form-horizontal'>";
+
+	foreach ($formElements as $element){
+		$elementName= $element->question;
+		$helpText= isset($element->help_text)? $element->help_text : "";
+		$pattern = isset($element->pattern) ? $element->pattern : "";
+		$required = "";
+		if($element->required == 1){
+			$required = "required";
+		}
+
+		$elementType=DFElement::findByID($element->element_id);
+		$elementType=$elementType->type;
+
+		$hasChild=false;
+		$list = false;
+		$textarea = false;
+
+		if($element->element_id < 4){
+			// It means the element_id is 1, 2 or 3
+			// It means that it has got children
+			// Which it means it could be lists, radio buttons or checkboxes
+
+			$hasChild= true;
+			$elementChildren= DFElementGroup::findChildren($form->id, $element->element_id);
+
+			switch($elementType){
+				case "radio":
+					$labelClassName="radio-inline";
+					break;
+				case "checkbox":
+					$labelClassName="checkbox-inline";
+					break;
+			}
+
+			if($element->element_id == 3){
+				// It is a list
+				$list = true;
+			}
+		}
+
+		if($element->element_id == 7){
+			$textarea = true;
+		}
+
+		$result.= "<div class='form-group'>";
+		$result.= "<label for=\"$elementName\" class=\"col-sm-4 control-label $required\">$elementName</label>";
+
+		if($hasChild){
+			if($list){
+				$result.= "<label for=\"$elementName\" class=\"$labelClassName\"><select class='form-control' id=\"$elementName\">";
+				if(!empty($helpText)){
+					$result.= "<span class='help-block small'>$helpText</span>";
+				}
+			}
+			foreach ($elementChildren as $elementChild){
+				if($list){
+					$result.= "<option id=\"$elementName\" value=\"$elementChild->text\" $required>$elementChild->text</option>";
+				} else {
+					$result.= "<label class=\"$labelClassName\">";
+					$result.= "<input type=\"$elementType\" id=\"$elementName\" name=\"$elementName\" value=\"$elementChild->text\" $required> $elementChild->text";
+					$result.= "</label>";
+				}
+
+			}
+			if($list){
+				$result.= "</select></label>";
+			}
+		} else{
+			$result.= "<div class='col-md-4 col-xs-3'>";
+			if($textarea){
+				$result.= "<textarea class='form-control input-sm' rows='3' id=\"$elementName\" placeholder=\"$helpText\" $required></textarea>";
+			} else {
+				$result.= "<input type=\"$elementType\" id=\"$elementName\" class='form-control'";
+				if(!empty($pattern)){
+					$result.= " pattern=\"$pattern\"";
+				}
+					
+				if($elementType == "number"){
+					$result.= " min='0'";
+				}
+				$result.= " placeholder=\"$helpText\" title=\"$helpText\" $required>";
+				if($elementType == "time" || $elementType == "date"){
+					if(!empty($helpText)){
+						$result.= "<span class='help-block small'>$helpText</span>";
+					}
+				}
+			}
+			$result.= "</div>";
+		}
+		$result.= "</div>";
+	}
+
+	$result.= "<div class='form-group'>";
+	$result.= "<label class='col-sm-4 control-label'></label>";
+	$result.= "<div class='col-md-4 col-xs-3'>";
+	$result.= "<button type='submit' class='btn btn-primary'>Submit</button>";
+	$result.= "</div>";
+	$result.= "</div>";
+	$result.= "</form>";
+	#----------------------------------------Form end
+
+	return $result;
+}
+
 ?>

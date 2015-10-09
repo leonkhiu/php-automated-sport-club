@@ -2,7 +2,7 @@
 require_once("layout/top.php");
 $sweetAlertRequirement = true;
 $paginationRequirement = true;
-$showLogs = false;
+$showLogs = $newUser = false;
 
 $viewType = isset($_GET['type'])? $_GET['type'] : "log";
 $logLink  = $currentFile. "?type=log";
@@ -80,6 +80,7 @@ switch ($viewType) {
 		$objects = User::findAllPagination($perPage, $pagination->offset());
 		$columns=array("username", "active", "fname", "lname", "date");
 		$result = showAll($objects, $columns, false, true, true, $startId);
+		$newUser = true;
 		break;
 	case "log":
 		$objects = SysLog::findAllPagination($perPage, $pagination->offset());
@@ -98,6 +99,10 @@ echo moreSpace();
 if($showLogs){
 	$removeLink = currentFile () . "?log_truncate=1367";
 	echo "<a  class='btn btn-danger' onclick=systemlogdeletion('" . $removeLink . "') role='button'>Remove all logs</a>";
+}
+
+if($newUser){
+	echo "<a  class='btn btn-primary' role='button' href='new.php?type=user'>New user</a>";
 }
 
 

@@ -4,7 +4,7 @@
 
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
           <div class="list-group">
-            <a href="index.php" class="list-group-item">Home</a>
+            <!-- <a href="index.php" class="list-group-item">Home</a> -->
             <a href="viewall.php" class="list-group-item">My Admin</a>
             <a href="retrieve_form.php" class="list-group-item">Retrieve Forms</a>
             <a href="create_form.php" class="list-group-item">Create a new form</a>

@@ -3,22 +3,24 @@ require_once("layout/top.php");
 $title = "Manage the website, $uname";
 $fontAwesome = true;
 
-$viewType = isset($_GET['type'])? $_GET['type'] : "sports";
+$viewType = isset($_GET['type'])? $_GET['type'] : "sport";
 $userLink = $currentFile. "?type=users";
 $teamsLink = $currentFile. "?type=teams";
 $groupsLink = $currentFile. "?type=groups";
 $gamesLink = $currentFile. "?type=games";
 $scoresLink = $currentFile. "?type=scores";
 $tournamentLink = $currentFile. "?type=tournament";
-$sportLink = $currentFile. "?type=sports";
+$sportLink = $currentFile. "?type=sport";
 $tabSportClass = $tabTeamsClass =$tabGroupsClass =$tabScoresClass =$tabTournamentClass = "";
+$createNew = false;
 
 switch ($viewType) {
 	
-	case "sports" :
+	case "sport" :
 		$tabSportClass = "active";
 		$objects = Sport::findAll();
 		$columns = array("name");
+		$createNew = true;
 		break;
 	case "teams" :
 		$tabTeamsClass = "active";
@@ -39,6 +41,7 @@ switch ($viewType) {
 		$tabTournamentClass = "active";
 		$objects = Tournament::findAll();
 		$columns = array("name", "date");
+		$createNew = true;
 		break;
 }
 
@@ -57,9 +60,12 @@ echo "</ul>";
 
 echo moreSpace();
 
-
 echo showAll($objects, $columns, false, false,false, 1);
 
+if($createNew){
+	$link = "new.php?type=".$viewType;
+	echo "<a  class='btn btn-primary' role='button' href='$link'>New $viewType</a>";
+}
 
 
 

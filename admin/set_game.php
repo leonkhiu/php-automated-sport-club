@@ -46,7 +46,7 @@ require_once ("layout/htmltop.php");
 		</select>
 	</div>
 
-	<div class="row invisible" id="tournaments">
+	<div class="row hidden" id="tournaments">
 		<label for="tournament" class="col-sm-2 control-label">Tournament:</label>
 		<select name="tournament" id="tournament" class="form-control" onChange="showMe('groupList','row'); getGroups(sport.value,this.value);">
 			<option value="">Select Tournament</option>
@@ -60,7 +60,7 @@ require_once ("layout/htmltop.php");
 		</select>
 	</div>
 
-	<div class="row invisible" id="groupList">
+	<div class="row hidden" id="groupList">
 		<label for="group" class="col-sm-2 control-label">Group:</label>
 		<select name="group" class="form-control" id="group" onChange="showMe('newGameSubmit',''); getTeams(this.value); getValue('group','groupId');">
 			<option value="">Select Group</option>
@@ -71,7 +71,7 @@ require_once ("layout/htmltop.php");
 
 <div class="clearfix"></div>
 
-<div class="invisible" id="newGameSubmit">
+<div class="hidden" id="newGameSubmit">
 <hr>
 <form class="col-md-4 col-md-offset-4 col-sx-4 col-sx-offset-4 col-sm-4 col-sm-offset-4" method="POST">
 
