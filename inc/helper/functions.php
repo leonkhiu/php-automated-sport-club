@@ -61,6 +61,10 @@ function showAll($objects, $columns, $view = false, $edit = false, $remove = fal
 			$content = "Tournament";
 		}
 		
+		if ($column == "permission_id") {
+			$content = "Permission";
+		}
+		
 		$result .= "<th>$content</th>";
 	}
 	
@@ -107,6 +111,11 @@ function showAll($objects, $columns, $view = false, $edit = false, $remove = fal
 				$content = Sport::findNameById($object->sport_id);
 			} elseif($column == "tournament_id"){	
 				$content = Tournament::findNameById($object->tournament_id);
+			} elseif($column == "permission_id"){
+				
+				$content = Permission::findByID($object->permission_id);
+				$content = $content->title;
+				
 			}else {
 				$content = $object->$column;
 			}

@@ -11,6 +11,7 @@
             <a href="submit_result.php" class="list-group-item">Submit result</a>
             <a href="manage.php" class="list-group-item">Manage</a>
             <a href="set_game.php" class="list-group-item">New Event</a>
+            <a href="users_permissions.php" class="list-group-item">Permissions</a>
           </div>
         </div><!--/.sidebar-offcanvas-->
       </div><!--/row-->
@@ -18,7 +19,7 @@
       <hr>
 
       <footer>
-        <p>&copy; AutomatedSportClub <?php echo date("Y", time()); ?></p>
+        <p>&copy; <?php echo WEBSITE_TITLE. ' '. date("Y", time()); ?></p>
       </footer>
 
     </div><!--/.container-->

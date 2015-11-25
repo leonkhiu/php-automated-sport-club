@@ -109,6 +109,15 @@ class DBO{
 		return $mydb->execute($sql);
 	}
 	
+	public static function findByUid($uid){
+		global $mydb;
+		$className=get_called_class();
+		$object= new $className;
+		$sql="SELECT * FROM `". $object::$tableName. "` WHERE (`uid`=?)";
+		$data = array($uid);
+		return $mydb->execute($sql, $data);
+	}
+	
 	//FIXME fix this one as SQL injection
 	public static function findAllPagination($perPage, $offset, $DESC=false){
 		global $mydb;
