@@ -8,7 +8,7 @@
 <meta name="author" content="MoHo">
 <link rel="shortcut icon" href="favicon.png">
 
-<title><?php echo $title;?> - Sport Club</title>
+<title><?php echo WEBSITE_TITLE;?></title>
 
 <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -30,7 +30,7 @@
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 			      </button>
-			      <a class="navbar-brand" href="index.php">Automated Sport Club</a>
+			      <a class="navbar-brand" href="index.php"><?php echo WEBSITE_TITLE; ?></a>
 			    </div>
 			
 			    <!-- Collect the nav links, forms, and other content for toggling -->

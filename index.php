@@ -1,5 +1,6 @@
 <?php 
-$title = "Home";
+require_once 'inc/site_setting.php';
+$title = "";
 $currentFile=basename ( $_SERVER ['PHP_SELF'] );
 $additionalCss = '<link href="css/carousel.css" rel="stylesheet">';
 $additionalJS = '';

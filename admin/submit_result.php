@@ -3,7 +3,7 @@ require_once ("layout/top.php");
 //$sweetAlertRequirement = true;
 $fontAwesome = true;
 
-$title = "Submit the Game result - $uname";
+$title = "Submit the Game result";
 $messages [] = "You can submit the game result only once!";
 $messages [] = "You can see all games which you are entitle to, but you can submit when the game is finished!";
 $messages [] = "You can only submit the game result if it past 5 hours after the game.";

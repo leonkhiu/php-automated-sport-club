@@ -1,7 +1,7 @@
 <?php
 require_once("layout/top.php");
 $sweetAlertRequirement = true;
-$title = "Administrator-Home-Welcome $uname";
+$title = "Administrator";
 
 #-----------------------------------------check for welcome alert after login
 $previousPage = isset($_SERVER['HTTP_REFERER'])? $_SERVER['HTTP_REFERER'] :'';

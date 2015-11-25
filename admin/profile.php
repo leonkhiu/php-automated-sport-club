@@ -1,7 +1,7 @@
 <?php
 require_once("layout/top.php");
 $sweetAlertRequirement = true;
-$title = "Administrator-Home-Welcome $uname";
+$title = "$uname profile";
 
 
 require_once ("layout/htmltop.php");

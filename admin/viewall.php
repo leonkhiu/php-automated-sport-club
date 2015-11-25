@@ -35,7 +35,7 @@ if(isset($_GET['log_truncate']) && $_GET['log_truncate'] == 1367){
 $totalPages = (round($total/$perPage) == 1)? 0 : round($total/$perPage);
 $pagination = new pagination($page, $perPage , $total);
 
-$title = "Administrator-Home-Welcome $uname";
+$title = "Administrator";
 /*
 $confirmJqueryUICSS= '<link rel="stylesheet" href="../css/jquery-ui.css" />';
 $confirmJqueryUIJS ='<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>';

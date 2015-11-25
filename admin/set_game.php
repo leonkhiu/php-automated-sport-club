@@ -1,7 +1,7 @@
 <?php
 require_once("layout/top.php");
 $sweetAlertRequirement = true;
-$title = "New game $uname";
+$title = "New game";
 
 $sports = Sport::findAll();
 $tournaments = Tournament::findAll();

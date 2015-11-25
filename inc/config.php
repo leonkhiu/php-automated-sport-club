@@ -15,11 +15,5 @@ define("DB_USER","root");
 define("DB_PASS","");
 define("DB_NAME","CSM40");
 
-#****************Site and domain
-define("WEBSITE_NAME", "automated-sport-club");
-define("DOMAIN", "http://localhost/automated-sport-club");
-
-#*********************Website settings
-define("COOKIE_EXPIRE", time () + (14 * 24 * 60 * 60));
 
 ?>

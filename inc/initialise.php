@@ -1,7 +1,7 @@
 <?php
 # Core objects
 require_once ('dbo.php');
-//require_once ('');
+require_once ('site_setting.php');
 
 # Helper objects
 require_once ('helper/functions.php');

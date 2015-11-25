@@ -7,7 +7,7 @@ $newForm = isset($_POST['newForm'])? true : false;
 
 $stepOne = $stepTwo = $stepThree = false;
 
-$title = "Create a new form-$uname";
+$title = "Create a new form";
 $additionalJS .= '<script src="../js/newform.js" type="text/javascript"></script>';
 $additionalJS .= '<script src="../js/darg-drop.js" type="text/javascript"></script>';
 

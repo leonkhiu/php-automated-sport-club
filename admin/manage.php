@@ -1,6 +1,6 @@
 <?php
 require_once("layout/top.php");
-$title = "Manage the website, $uname";
+$title = "Manage the website";
 $fontAwesome = true;
 
 $viewType = isset($_GET['type'])? $_GET['type'] : "sport";

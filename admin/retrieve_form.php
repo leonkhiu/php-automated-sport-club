@@ -30,7 +30,7 @@ if(isset($delFormId)){
 	}
 }
 
-$title = "Retrieve Forms-$uname";
+$title = "Retrieve Forms";
 
 $additionalJS .="
 		<script>
