@@ -1,4 +1,4 @@
-<?php
+<?php 
 require_once("layout/top.php");
 $sweetAlertRequirement = true;
 $title = "Users Permissions";
