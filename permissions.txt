@@ -1,6 +1,0 @@
-Permission:
-
--Each section of project has got a permission ID
--Each user has got a permission ID
--A table with user_permission_id and section_permission_id fields 
-	If use has got the section_permission_id: then allow to enter that section

@@ -18,6 +18,13 @@ class GroupTeam extends DBO{
 		return $mydb->execute($sql, $data);
 	}
 	
+	public static function removeByGroupId($groupId){
+		global $mydb;
+		$sql="DELETE FROM `". self::$tableName."` WHERE(`group_id`=?)";
+		$data = array($groupId);
+		return ($mydb->execute($sql, $data)) ? true : false;
+	}
+	
 	
 } // end of : class GroupTeam
 $groupTeam=new GroupTeam();
