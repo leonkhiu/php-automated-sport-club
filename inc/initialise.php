@@ -16,6 +16,7 @@ require_once ('sport_scoring.php');
 require_once ('score.php');
 require_once ('final_score.php');
 require_once ('team.php');
+require_once ('team_sport.php');
 require_once ('club.php');
 require_once ('tournament.php');
 require_once ('groups.php');

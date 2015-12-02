@@ -3,6 +3,10 @@ require_once("layout/top.php");
 $title = "Manage the website";
 $fontAwesome = true;
 
+if(isset($_GET['type']) && $_GET['type'] == 'group' && isset($_GET['viewId'])){
+	redirectTo('manage_group.php?groupId='. (int)$_GET['viewId']);
+}
+
 $viewType = isset($_GET['type'])? $_GET['type'] : "sport";
 $userLink = $currentFile. "?type=users";
 $teamsLink = $currentFile. "?type=teams";
@@ -61,7 +65,7 @@ echo "</ul>";
 
 echo moreSpace();
 
-echo showAll($objects, $columns, false, false,false, 1);
+echo showAll($objects, $columns, true, false,false, 1);
 
 if($createNew){
 	$link = "new.php?type=".$viewType;

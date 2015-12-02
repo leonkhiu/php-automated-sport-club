@@ -8,6 +8,11 @@
             <a href="create_form.php" class="list-group-item">New form</a>
             <a href="retrieve_form.php" class="list-group-item">Retrieve Forms</a>
           </div>
+          <p class="text-primary"><strong>Sections</strong></p>
+          <div class="list-group">
+            <a href="manage.php" class="list-group-item">View All</a>
+            <!-- <a href="manage_group.php" class="list-group-item">Group</a> -->
+          </div>
           <p class="text-primary"><strong>Games</strong></p>
           <div class="list-group">
             <a href="set_game.php" class="list-group-item">New Event</a>
@@ -16,7 +21,6 @@
           <p class="text-primary"><strong>Website Administrator</strong></p>
           <div class="list-group">
              <a href="viewall.php" class="list-group-item">Website Admin</a>
-            <a href="manage.php" class="list-group-item">Manage</a>
             <a href="users_permissions.php" class="list-group-item">Permissions</a>
           </div>
           
