@@ -3,16 +3,23 @@
         </div><!--/.col-xs-12.col-sm-9-->
 
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+		  <p class="text-primary"><strong>Dynamic Forms</strong></p>
           <div class="list-group">
-            <!-- <a href="index.php" class="list-group-item">Home</a> -->
-            <a href="viewall.php" class="list-group-item">My Admin</a>
+            <a href="create_form.php" class="list-group-item">New form</a>
             <a href="retrieve_form.php" class="list-group-item">Retrieve Forms</a>
-            <a href="create_form.php" class="list-group-item">Create a new form</a>
-            <a href="submit_result.php" class="list-group-item">Submit result</a>
-            <a href="manage.php" class="list-group-item">Manage</a>
+          </div>
+          <p class="text-primary"><strong>Games</strong></p>
+          <div class="list-group">
             <a href="set_game.php" class="list-group-item">New Event</a>
+            <a href="submit_result.php" class="list-group-item">Submit result</a>
+          </div>
+          <p class="text-primary"><strong>Website Administrator</strong></p>
+          <div class="list-group">
+             <a href="viewall.php" class="list-group-item">Website Admin</a>
+            <a href="manage.php" class="list-group-item">Manage</a>
             <a href="users_permissions.php" class="list-group-item">Permissions</a>
           </div>
+          
         </div><!--/.sidebar-offcanvas-->
       </div><!--/row-->
 

@@ -83,7 +83,7 @@ switch ($viewType) {
 		$newUser = true;
 		break;
 	case "log":
-		$objects = SysLog::findAllPagination($perPage, $pagination->offset());
+		$objects = SysLog::findAllPagination2($perPage, $pagination->offset());
 		$columns=array("username", "message", "date");
 		$result = showAll($objects, $columns, false, false, false, $startId);
 		$showLogs = true;

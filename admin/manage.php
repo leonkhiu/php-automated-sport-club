@@ -6,7 +6,7 @@ $fontAwesome = true;
 $viewType = isset($_GET['type'])? $_GET['type'] : "sport";
 $userLink = $currentFile. "?type=users";
 $teamsLink = $currentFile. "?type=teams";
-$groupsLink = $currentFile. "?type=groups";
+$groupsLink = $currentFile. "?type=group";
 $gamesLink = $currentFile. "?type=games";
 $scoresLink = $currentFile. "?type=scores";
 $tournamentLink = $currentFile. "?type=tournament";
@@ -27,10 +27,11 @@ switch ($viewType) {
 		$objects = Team::findAll();
 		$columns = array("name", "club_id", "date");
 		break;
-	case "groups" :
+	case "group" :
 		$tabGroupsClass = "active";
 		$objects = Groups::findAll();
 		$columns = array("name", "sport_id", "tournament_id", "date");
+		$createNew = true;
 		break;
 	case "scores" :
 		$tabScoresClass = "active";
@@ -64,7 +65,9 @@ echo showAll($objects, $columns, false, false,false, 1);
 
 if($createNew){
 	$link = "new.php?type=".$viewType;
-	echo "<a  class='btn btn-primary' role='button' href='$link'>New $viewType</a>";
+	echo "<a class='btn btn-default btn-lg' role='button' href='$link'>
+				<span class='glyphicon glyphicon-plus' aria-hidden='true'></span>
+				New</a>";
 }
 
 

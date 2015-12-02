@@ -52,7 +52,6 @@ $objects = DFForm::findAllPagination ( $perPage, $pagination->offset () );
 $columns = array (
 		"uid",
 		"title",
-		"description",
 		"date" 
 );
 $startId=(($page-1) * $perPage) + 1;

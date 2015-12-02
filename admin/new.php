@@ -4,6 +4,7 @@ $type = ! empty ( $_GET ['type'] ) ? $_GET ['type'] : null;
 
 if(!isset($type)){ redirectTo("index.php"); }
 $title = "New $type";
+$newGroup = false;
 
 switch ($type){
 
@@ -25,6 +26,12 @@ switch ($type){
 		$elements = array(
 		array('type' => 'text', 'name' => 'name', 'label'=>'Tournament name', 'placeholder' => 'e.g. Group, Playoff')
 		);
+		break;
+		
+	case 'group' :
+		$newGroup = true;
+		$sports = Sport::findAll();
+		$tournaments = Tournament::findAll();
 		break;
 		
 }
@@ -68,13 +75,48 @@ if(isset($_POST['save'])){
 
 require_once ("layout/htmltop.php");
 /**************************************************/
-
 ?>
-
+<h3 class="text-success">Add a new <?php echo $type; ?></h3>
 <div class="col-md-6 col-md-offset-3 col-sx-6 col-sx-offset-3 col-sm-6 col-sm-offset-3">
 	<form class="form-horizontal" method="POST">
 
 <?php 
+
+if($newGroup){
+	echo "<div class='form-group'>";
+	echo "<label for='sport' class='col-sm-5 control-label'>Sport</label>";
+	echo "<div class='col-sm-7'>";
+	echo "<select class='form-control' id='sport' name='sport' required='required'>";
+	echo "<option value='' disabled selected>Select a sport</option>";
+	foreach ($sports as $sport){
+		echo "<option value='{$sport->id}'>{$sport->name}</option>";
+	}
+	echo "</select>";
+	echo "</div>";
+	echo "</div>";
+	
+	echo "<div class='form-group'>";
+	echo "<label for='tournament' class='col-sm-5 control-label'>Tournament</label>";
+	echo "<div class='col-sm-7'>";
+	echo "<select class='form-control' id='tournament' name='tournament' required='required'>";
+	echo "<option value='' disabled selected>Select a tournament</option>";
+	foreach ($tournaments as $tournament){
+		echo "<option value='{$tournament->id}'>{$tournament->name}</option>";
+	}
+	echo "</select>";
+	echo "</div>";
+	echo "</div>";
+	
+	echo "<div class='form-group'>";
+	echo "<label for='group-name' class='col-sm-5 control-label'>Name</label>";
+	echo "<div class='col-sm-7'>";
+	echo "<input type='text' class='form-control' id='group-name' name='name' required='required' placeholder='Group name'>";
+	echo "</div>";
+	echo "</div>";
+	
+	
+} else{
+
 echo "<input type='hidden' name='new-what' value='$type'>";
 foreach ($elements as $element){
 	$type = $element['type'];
@@ -90,17 +132,17 @@ foreach ($elements as $element){
 	echo "</div>";
 	
 }
-
+} // end of else
 ?>
-
 		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn btn-primary" name="save">Save</button>
+			<div class="col-sm-10">
+				<button type="submit" class="btn btn-primary center-block" name="save">Save</button>
 			</div>
 		</div>
 	</form>
 </div>
 
 <?php 
+
 require_once ('layout/htmlbuttom.php');
 ?>
