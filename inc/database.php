@@ -1,5 +1,22 @@
 <?php
-require_once ('config.php');
+//require_once ('config.php');
+/**
+ * Choose Database Type
+ * all small letter, it is case sensetive
+ * at the moment, it works with 'mysql' and 'sqlite'
+ */
+define ( "PDO_DB", "mysql" );
+// define("PDO_DB", "sqlite");
+
+// database constants for MYSQL
+define('DB_HOST','mysql:host=127.0.0.1;dbname=CSM40');
+define ( "DB_USER", "root" );
+define ( "DB_PASS", "root" );
+
+
+
+
+
 class myPDO {
 	
 	private $link;
@@ -7,11 +24,11 @@ class myPDO {
 	private $lastQuery;
 	public  $lastPreparedQuery;
 	
-	function __construct($dbtype = PDO_DB) {
+	function __construct($dbtype = 'mysql') {
 		try {
 			
 			if ($dbtype === "mysql") {
-				$this->link = new PDO ( "mysql:host=localhost;dbname=" . DB_NAME, DB_USER, DB_PASS );
+				$this->link = new PDO ( DB_HOST, DB_USER, DB_PASS );
 				$connectionResult = true;
 			} elseif ($dbtype === "sqlite") {
 				$this->link = new PDO ( "sqlite:DB/mydb.sqlite" );
