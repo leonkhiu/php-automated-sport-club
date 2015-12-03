@@ -96,6 +96,12 @@ function showAll($objects, $columns, $view = false, $edit = false, $remove = fal
 				} else {
 					$content = "Not active";
 				}
+			} elseif ($column == "done") {
+				if ($object->$column == 1) {
+					$content = "Yes";
+				} else {
+					$content = "No";
+				}
 			} elseif ($column == "uid") {
 				if($object->$column == 0){
 					$content = "Unknown";
@@ -361,4 +367,10 @@ function showForm($formId){
 	return $result;
 }
 
+function showRawArray($rawArray){
+	echo "<pre>";
+	print_r($rawArray);
+	//var_dump($rawArray);
+	echo "</pre>";
+}
 ?>

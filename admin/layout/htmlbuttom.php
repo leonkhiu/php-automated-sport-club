@@ -15,8 +15,8 @@
           </div>
           <p class="text-primary"><strong>Games</strong></p>
           <div class="list-group">
-            <a href="set_game_auto.php" class="list-group-item">Authomatic Event</a>
-            <a href="set_game.php" class="list-group-item">New Event(Manual)</a>
+            <a href="set_game_auto.php" class="list-group-item">Authomatic Events</a>
+            <a href="set_game.php" class="list-group-item">Manual Events</a>
             <a href="submit_result.php" class="list-group-item">Submit result</a>
           </div>
           <p class="text-primary"><strong>Website Administrator</strong></p>

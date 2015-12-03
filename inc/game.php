@@ -31,6 +31,15 @@ class Game extends DBO{
 		return $mydb->execute($sql, $data);
 	}
 	
+	public static function hasBeenSet($firstTeam, $secondTeam){
+		global $mydb;
+		$sql="SELECT * FROM `". self::$tableName. "` WHERE ((`first_team_id`=?) OR (`second_team_id`=?)) AND ((`first_team_id`=?) OR (`second_team_id`=?))";
+		$data = array($firstTeam, $firstTeam, $secondTeam, $secondTeam);
+		$result = $mydb->execute($sql, $data);
+		//print_r($result);
+		return (sizeof($result))? true : false;
+	}
+	
 	/**
 	 * Used in LIVE SCORE
 	 * @param number $groupId

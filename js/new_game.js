@@ -25,6 +25,19 @@ function getTeams(groupId) {
 	});
 }
 
+function getGames(groupId) {
+	$.ajax({
+		type : 'POST',
+		url : 'ajax/get_games.php',
+		data : {
+			'groupId' : groupId
+		},
+		success : function(data) {
+			$('#allGames').html(data);
+		}
+	});
+}
+
 function getTeams2(groupId, team1Id) {
 	$.ajax({
 		type : 'POST',
