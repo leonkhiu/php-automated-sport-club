@@ -6,7 +6,7 @@ $title = "Users Permissions";
 $allPermissions = Permission::findAll();
 $myPermissions = UserPermission::findByUid($uid);
 
-echo (UserPermission::hasPermission($uid, 8))? "yes" : "noooo";
+//echo (UserPermission::hasPermission($uid, 8))? "yes" : "noooo";
 
 
 require_once ("layout/htmltop.php");

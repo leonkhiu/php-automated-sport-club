@@ -6,7 +6,7 @@ $fontAwesome = true;
 $title = "Submit the Game result";
 $messages [] = "You can submit the game result only once!";
 $messages [] = "You can see all games which you are entitle to, but you can submit when the game is finished!";
-$messages [] = "You can only submit the game result if it past 5 hours after the game.";
+//$messages [] = "You can only submit the game result if it past 5 hours after the game.";
 
 $formId = ! empty ( $_GET ['formId'] ) ? ( int ) $_GET ['formId'] : 0;
 $gameId = ! empty ( $_GET ['gameId'] ) ? ( int ) $_GET ['gameId'] : 0;
@@ -24,7 +24,8 @@ if(isset($_POST['submitResult'])){
 	
 	$game = Game::findByID($_POST ['gameId']);
 	
-	if( (((int)$game->date) + 18000) < time()){
+	//if( (((int)$game->date) + 18000) < time()){
+	if(1){
 		
 		$score->game_id = $gameId =  $_POST ['gameId'] ;
 		

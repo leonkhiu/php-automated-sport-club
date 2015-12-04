@@ -16,7 +16,6 @@ define ( "DB_PASS", "root" );
 
 
 
-
 class myPDO {
 	
 	private $link;
